@@ -19,15 +19,12 @@ jobs:
       pull-requests: write
       repository-projects: write
     outputs:
-      preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
+      preview_url: ${{ steps.vercel_preview_url.outputs.vercel_preview_url }}
     timeout-minutes: 15
     steps:
-      - name: Sleep
-        run: sleep 60
-
       - name: Wait for Vercel preview deployment to be ready
-        uses: patrickedqvist/wait-for-vercel-preview@v1.3.1
-        id: waitForVercelPreviewDeployment
+        uses: aaimio/vercel-preview-url-action@v2.2.0
+        id: vercel_preview_url
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           max_timeout: 3500
@@ -52,7 +49,7 @@ jobs:
       - name: Run tests
         run: npx playwright test
         env:
-          BASE_URL: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
+          BASE_URL: ${{ steps.vercel_preview_url.outputs.vercel_preview_url }}
         continue-on-error: true
 
       - name: Update Coverage Badge
