@@ -20,6 +20,9 @@ jobs:
       checks: read
       contents: read
     steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
       - name: Capture Vercel preview URL
         id: vercel_preview_url
         uses: aaron-binary/vercel-preview-url-action@v0.0.3
