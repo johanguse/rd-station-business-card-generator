@@ -27,12 +27,16 @@ export default defineConfig({
 
   // Run your local dev server before starting the tests:
   // https://playwright.dev/docs/test-advanced#launching-a-development-web-server-during-the-tests
-  webServer: {
-    command: 'bun run dev',
-    url: baseURL,
-    timeout: 120 * 1000,
-    reuseExistingServer: !process.env.CI,
-  },
+  webServer: process.env.CI
+    ? undefined
+    : {
+        command: 'bun run dev',
+        reuseExistingServer: false,
+        url:
+          process.env.PLAYWRIGHT_TEST_BASE_URL ||
+          baseURL ||
+          'http://localhost:3000',
+      },
 
   // Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions.
   use: {

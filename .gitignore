@@ -20,6 +20,7 @@
 .DS_Store
 *.pem
 .swc
+.nyc_output
 
 # debug
 npm-debug.log*

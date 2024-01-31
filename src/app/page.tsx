@@ -6,11 +6,13 @@ export default function Home() {
     <main className="p-24">
       <header className="bg-primary-light p-6 text-center text-white">
         <h1>Gerador de Cartão de Visita</h1>
-        <p>Crie grátis seu cartão de visita em passos rápidos!</p>
+        <p className="text-sm">
+          Crie grátis seu cartão de visita em passos rápidos!
+        </p>
       </header>
 
       <main className="flex h-screen items-center justify-center">
-        <form className="mb-4 w-full max-w-lg rounded bg-white px-8 pb-8 pt-6 shadow-md">
+        <form className="mb-4 w-full max-w-lg p-6 shadow-md">
           <FormField
             id="name"
             name="name"
@@ -39,7 +41,7 @@ export default function Home() {
         </form>
       </main>
 
-      <footer className="bg-purple-600 p-4 text-center text-white">
+      <footer className="bg-primary-light p-4 text-center text-white">
         <p>© 2023 Resultados Digitais</p>
         <a
           href="https://legal.rdstation.com/pt/privacy-policy/"

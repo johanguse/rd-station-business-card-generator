@@ -12,6 +12,8 @@ const customJestConfig: Config.InitialOptions = {
 
   testMatch: ['**/__tests__/integration/**/*.[jt]s?(x)'],
 
+  extensionsToTreatAsEsm: ['.ts'],
+
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.jest.json',
@@ -34,7 +36,7 @@ const customJestConfig: Config.InitialOptions = {
   ],
 
   coverageDirectory: '<rootDir>/coverage',
-  coverageReporters: ['json', 'lcov', 'text', 'clover'],
+  coverageReporters: ['json', 'json-summary', 'lcov', 'text', 'clover'],
 
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest',

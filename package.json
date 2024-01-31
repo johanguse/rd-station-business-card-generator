@@ -8,14 +8,14 @@
     "start": "next start",
     "test": "jest",
     "test-e2e": "playwright test",
-    "create-report": "nyc report --reporter html --reporter text --reporter json -t coverage --report-dir coverage/summary",
+    "create-report": "nyc report --reporter json-summary --reporter html --reporter text --reporter json -t coverage --report-dir coverage/summary",
     "coverage": "npm run test && npm run test-e2e && npm run create-report",
     "lint": "next lint"
   },
   "dependencies": {
+    "next": "14.1.0",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.1.0"
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@playwright/test": "^1.41.1",
