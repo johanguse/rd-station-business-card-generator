@@ -5,9 +5,8 @@ on:
     branches: ['main']
   push:
     branches: ['main']
-  workflow_dispatch:
   deployment_status:
-    types: [succeed, failed]
+  workflow_dispatch:
 
 jobs:
   run-e2es:
