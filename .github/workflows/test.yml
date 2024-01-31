@@ -49,7 +49,7 @@ jobs:
         run: bun playwright install --with-deps
 
       - name: Run tests
-        run: bun run coverage
+        run: bun run test && bun test-e2e
         env:
           BASE_URL: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
           PLAYWRIGHT_TEST_BASE_URL: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
