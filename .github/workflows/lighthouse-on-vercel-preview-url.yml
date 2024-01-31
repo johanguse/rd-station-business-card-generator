@@ -10,6 +10,8 @@ jobs:
   generate_lighthouse_audit:
     timeout-minutes: 30
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - name: Add comment to PR
         id: loading_comment_to_pr
