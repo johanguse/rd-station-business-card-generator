@@ -1,5 +1,9 @@
 name: Test
-on: [push, pull_request, workflow_dispatch]
+on:
+  pull_request:
+    branches: ['main']
+  push:
+    branches: ['main']
 jobs:
   test_setup:
     name: Test setup
@@ -18,6 +22,11 @@ jobs:
     needs: test_setup
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    permissions:
+      pull-requests: write
+      checks: read
+      contents: read
+      deployments: read
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
