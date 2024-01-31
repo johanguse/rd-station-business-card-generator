@@ -39,7 +39,7 @@ export default function Home() {
         </form>
       </main>
 
-      <footer className="bg-primary-light p-4 text-center text-white">
+      <footer className="bg-primary-light p-4 text-center">
         <p>© 2023 Resultados Digitais</p>
         <a
           href="https://legal.rdstation.com/pt/privacy-policy/"
