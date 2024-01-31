@@ -5,29 +5,26 @@ on:
   push:
     branches: ['main']
   deployment_status:
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  workflow_dispatch:
 
 jobs:
   test_setup:
     name: Test setup
     runs-on: ubuntu-latest
-    timeout-minutes: 15
     permissions:
       pull-requests: write
       checks: read
       contents: read
+      deployments: read
+    outputs:
+      preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
     steps:
-      - uses: actions/setup-node@v4
+      - name: Wait for Vercel preview deployment to be ready
+        uses: patrickedqvist/wait-for-vercel-preview@v1.2.0
+        id: waitForVercelPreviewDeployment
         with:
-          node-version: '20'
-      - name: Capture Vercel preview URL
-        id: vercel_preview_url
-        uses: aaron-binary/vercel-preview-url-action@v0.0.3
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 6000
   test:
     needs: test_setup
     name: Test Run
@@ -45,9 +42,9 @@ jobs:
         run: npm ci && npx playwright install --with-deps
 
       - name: Run tests
-        run: npx playwright test
+        run: npx playwright test-e2e --config=playwright.config.ts
         env:
-          BASE_URL: ${{ steps.vercel_preview_url.outputs.vercel_preview_url }}
+          BASE_URL: ${{ needs.test_setup.outputs.preview_url }}
         continue-on-error: true
 
       - name: Update Coverage Badge
