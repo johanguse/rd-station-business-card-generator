@@ -42,8 +42,11 @@ export default defineConfig({
     ? undefined
     : {
         command: 'bun run dev',
-        url: 'http://localhost:3001',
         reuseExistingServer: false,
+        url:
+          process.env.PLAYWRIGHT_TEST_BASE_URL ||
+          baseURL ||
+          'http://localhost:3000',
       },
 
   // Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions.
