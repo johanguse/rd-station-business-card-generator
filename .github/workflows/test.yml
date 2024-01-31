@@ -8,10 +8,6 @@ jobs:
   test_setup:
     name: Test setup
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-      repository-projects: write
     outputs:
       preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
     timeout-minutes: 5
@@ -21,9 +17,8 @@ jobs:
         id: waitForVercelPreviewDeployment
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          max_timeout: 800
+          max_timeout: 3000
   test:
-    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
     needs: test_setup
     runs-on: ubuntu-latest
     permissions:
