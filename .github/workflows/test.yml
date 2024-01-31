@@ -2,6 +2,18 @@
 name: Test
 on: [push, pull_request, workflow_dispatch]
 jobs:
+  test_setup:
+    name: Test setup
+    runs-on: ubuntu-latest
+    outputs:
+      preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
+    steps:
+      - name: Wait for Vercel preview deployment to be ready
+        uses: patrickedqvist/wait-for-vercel-preview@master
+        id: waitForVercelPreviewDeployment
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 300
   test:
     runs-on: ubuntu-latest
     steps:
@@ -15,7 +27,7 @@ jobs:
       - run: bun run test-e2e
         continue-on-error: true
         env:
-          PLAYWRIGHT_SERVER: 'http://localhost:3000'
+          PLAYWRIGHT_TEST_BASE_URL: ${{ needs.test_setup.outputs.preview_url }}
 
       - name: Update Coverage Badge
         # GitHub actions: default branch variable
