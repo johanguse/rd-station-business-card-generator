@@ -48,7 +48,8 @@ jobs:
       - name: Run tests
         run: bun run coverage
         env:
-          BASE_URL: ${{ needs.test_setup.outputs.preview_url }}
+          BASE_URL: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
+          PLAYWRIGHT_TEST_BASE_URL: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
         continue-on-error: true
 
       - name: Update Coverage Badge
