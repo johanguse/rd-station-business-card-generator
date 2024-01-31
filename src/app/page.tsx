@@ -12,7 +12,7 @@ export default function Home() {
       </header>
 
       <main className="flex h-screen items-center justify-center">
-        <form className="mb-4 w-full max-w-lg rounded bg-transparent px-8 pb-8 pt-6 shadow-md">
+        <form className="mb-4 w-full max-w-lg rounded px-8 pb-8 pt-6 shadow-md">
           <FormField
             id="name"
             name="name"
