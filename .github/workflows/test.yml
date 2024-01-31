@@ -22,13 +22,11 @@ jobs:
       preview_url: ${{ steps.vercel_preview_url.outputs.vercel_preview_url }}
     timeout-minutes: 15
     steps:
-      - name: Wait for Vercel preview deployment to be ready
-        uses: aaimio/vercel-preview-url-action@v2.2.0
+      - name: Capture Vercel preview URL
         id: vercel_preview_url
+        uses: aaron-binary/vercel-preview-url-action@v0.0.3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          max_timeout: 3500
-          check_interval: 5
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   test:
     needs: test_setup
     name: Test Run
