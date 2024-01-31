@@ -4,7 +4,7 @@ import Button from '@/components/Button'
 export default function Home() {
   return (
     <main className="p-24">
-      <header className="bg-primary-light p-6 text-center text-white">
+      <header className="bg-primary-light p-6 text-center">
         <h1>Gerador de Cartão de Visita</h1>
         <p>Crie grátis seu cartão de visita em passos rápidos!</p>
       </header>

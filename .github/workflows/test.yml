@@ -1,5 +1,5 @@
 name: Test
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 jobs:
   test_setup:
     name: Test setup
@@ -14,21 +14,19 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           max_timeout: 300
   test:
+    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
     needs: test_setup
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v3
-      - uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
-
-      - run: bun install
-      - run: bun run test
-      - run: bun run test-e2e
-        continue-on-error: true
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm ci && npx playwright install --with-deps
+      - name: Run tests
+        run: npx playwright test
         env:
-          PLAYWRIGHT_TEST_BASE_URL: ${{ needs.test_setup.outputs.preview_url }}
+          BASE_URL: ${{ github.event.deployment_status.environment_url }}
+        continue-on-error: true
 
       - name: Update Coverage Badge
         # GitHub actions: default branch variable
