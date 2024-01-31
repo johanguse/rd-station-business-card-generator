@@ -40,10 +40,10 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: npm ci && npx playwright install --with-deps
+        run: bun install
 
       - name: Run tests
-        run: npx playwright test-e2e --config=playwright.config.ts
+        run: bun run coverage
         env:
           BASE_URL: ${{ needs.test_setup.outputs.preview_url }}
         continue-on-error: true
