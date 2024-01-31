@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install dependencies
-        run: npm install
+        run: npm install --frozen-lockfile && npx install playwright
       - name: Run tests
         run: npm run coverage
         env:
