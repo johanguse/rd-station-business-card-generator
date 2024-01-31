@@ -27,6 +27,7 @@ jobs:
           max_timeout: 6000
   test:
     needs: test_setup
+    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
     name: Test Run
     runs-on: ubuntu-latest
     permissions:
