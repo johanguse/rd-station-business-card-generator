@@ -6,7 +6,9 @@ export default function Home() {
     <main className="p-24">
       <header className="bg-primary-light p-6 text-center text-white">
         <h1>Gerador de Cartão de Visita</h1>
-        <p>Crie grátis seu cartão de visita em passos rápidos!</p>
+        <p className="text-sm">
+          Crie grátis seu cartão de visita em passos rápidos!
+        </p>
       </header>
 
       <main className="flex h-screen items-center justify-center">
