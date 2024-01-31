@@ -14,12 +14,6 @@ jobs:
   test_setup:
     name: Test setup
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-      repository-projects: write
-    outputs:
-      preview_url: ${{ steps.vercel_preview_url.outputs.vercel_preview_url }}
     timeout-minutes: 15
     steps:
       - name: Capture Vercel preview URL
@@ -30,7 +24,6 @@ jobs:
   test:
     needs: test_setup
     name: Test Run
-    if: github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
