@@ -14,13 +14,14 @@ jobs:
       repository-projects: write
     outputs:
       preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
+    timeout-minutes: 5
     steps:
       - name: Wait for Vercel preview deployment to be ready
         uses: patrickedqvist/wait-for-vercel-preview@v1.3.1
         id: waitForVercelPreviewDeployment
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          timeout-minutes: 5
+
   test:
     if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
     needs: test_setup
