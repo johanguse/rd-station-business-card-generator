@@ -8,6 +8,10 @@ jobs:
   test_setup:
     name: Test setup
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
     outputs:
       preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
     timeout-minutes: 5
@@ -17,7 +21,7 @@ jobs:
         id: waitForVercelPreviewDeployment
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          max_timeout: 3000
+          max_timeout: 3500
   test:
     needs: test_setup
     runs-on: ubuntu-latest
