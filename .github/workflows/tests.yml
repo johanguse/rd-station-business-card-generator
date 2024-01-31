@@ -15,10 +15,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
       - name: Install dependencies
-        run: npm install && npx playwright install --with-deps
+        run: bun install && bun playwright install --with-deps
       - name: Run tests
-        run: npm run test && npm run test-e2e
+        run: bun run test && bun run test-e2e
         env:
           BASE_URL: ${{ github.event.deployment_status.environment_url }}
           PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.environment_url }}
