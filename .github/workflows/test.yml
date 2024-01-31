@@ -20,7 +20,8 @@ jobs:
         id: waitForVercelPreviewDeployment
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          max_timeout: 300
+          environment: 'Preview – website'
+          max_timeout: 600
   test:
     if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
     needs: test_setup
