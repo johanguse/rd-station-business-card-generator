@@ -6,10 +6,13 @@ on:
   push:
     branches: ['main']
   workflow_dispatch:
+  deployment_status:
+    types: [succeed, failed]
 
 jobs:
   run-e2es:
     if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
+    name: Run Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
