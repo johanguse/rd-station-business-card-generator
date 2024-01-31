@@ -12,6 +12,8 @@ const customJestConfig: Config.InitialOptions = {
 
   testMatch: ['**/__tests__/integration/**/*.[jt]s?(x)'],
 
+  extensionsToTreatAsEsm: ['.ts'],
+
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.jest.json',
