@@ -1,36 +1,47 @@
-name: Playwright Tests
+name: Test
 on:
   pull_request:
-    branches:
-      - master
-
+    branches: ['main']
+  push:
+    branches: ['main']
 jobs:
   test_setup:
     name: Test setup
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
     outputs:
       preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
     steps:
       - name: Wait for Vercel preview deployment to be ready
-        uses: patrickedqvist/wait-for-vercel-preview@master
+        uses: patrickedqvist/wait-for-vercel-preview@v1.3.1
         id: waitForVercelPreviewDeployment
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          max_timeout: 300
-  test_e2e:
+          timeout-minutes: 5
+  test:
+    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
     needs: test_setup
-    name: Playwright tests
-    timeout-minutes: 5
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
+    timeout-minutes: 10
     steps:
-      - name: Prepare testing env
-        uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-      - run: npm ci
-      - run: npx playwright install --with-deps
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm ci && npx playwright install --with-deps
       - name: Run tests
-        run: npm run test:e2e
+        run: npx playwright test
         env:
-          PLAYWRIGHT_TEST_BASE_URL: ${{ needs.test_setup.outputs.preview_url }}
+          BASE_URL: ${{ github.event.deployment_status.environment_url }}
+        continue-on-error: true
+
+      - name: Update Coverage Badge
+        # GitHub actions: default branch variable
+        # https://stackoverflow.com/questions/64781462/github-actions-default-branch-variable
+        if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+        uses: we-cli/coverage-badge-action@main
