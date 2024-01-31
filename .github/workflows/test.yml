@@ -11,7 +11,8 @@ jobs:
           bun-version: latest
 
       - run: bun install
-      - run: bun run coverage
+      - run: bun run test
+      - run: bun run test-e2e
         continue-on-error: true
         env:
           PLAYWRIGHT_SERVER: 'http://localhost:3000'
