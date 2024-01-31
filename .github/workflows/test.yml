@@ -8,6 +8,10 @@ jobs:
   test_setup:
     name: Test setup
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
     outputs:
       preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
     steps:
@@ -21,12 +25,11 @@ jobs:
     if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
     needs: test_setup
     runs-on: ubuntu-latest
-    timeout-minutes: 5
     permissions:
+      contents: write
       pull-requests: write
-      checks: read
-      contents: read
-      deployments: read
+      repository-projects: write
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
