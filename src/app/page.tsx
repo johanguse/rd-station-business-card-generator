@@ -12,7 +12,7 @@ export default function Home() {
       </header>
 
       <main className="flex h-screen items-center justify-center">
-        <form className="mb-4 w-full max-w-lg px-4 py-6 shadow-md">
+        <form className="mb-4 w-full max-w-lg p-6 shadow-md">
           <FormField
             id="name"
             name="name"
