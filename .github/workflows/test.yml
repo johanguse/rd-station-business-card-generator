@@ -46,7 +46,7 @@ jobs:
         run: bun install
 
       - name: Install Playwright
-        run: bun install playwright --with-deps
+        run: npx playwright install --with-deps
 
       - name: Run tests
         run: bun run coverage
