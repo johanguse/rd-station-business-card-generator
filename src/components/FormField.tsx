@@ -17,10 +17,7 @@ export default function FormField({
 }: FormFieldProps) {
   return (
     <div className="mb-4">
-      <label
-        htmlFor={id}
-        className="mb-2 block text-sm font-bold text-gray-700"
-      >
+      <label htmlFor={id} className="mb-2 block text-sm font-bold text-white">
         {label}
       </label>
       <input
