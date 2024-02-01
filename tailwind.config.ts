@@ -2,9 +2,12 @@ import type { Config } from 'tailwindcss'
 
 const config: Config = {
   content: ['./src/**/*.{jsx,tsx}'],
-  darkMode: ['class'],
   theme: {
     extend: {
+      backgroundImage: {
+        'gradient-main':
+          'linear-gradient(93.82deg, var(--color-primary) -1.6%, #806EFF 105.56%)',
+      },
       colors: {
         primary: {
           DEFAULT: '#4839A3',
