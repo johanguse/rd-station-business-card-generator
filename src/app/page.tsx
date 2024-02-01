@@ -26,7 +26,7 @@ export default function Home() {
               height={198}
               className="mx-auto"
             />
-            <form className="mb-4 w-full p-6">
+            <form className="mb-4 w-full p-4">
               <FormField
                 id="name"
                 name="name"
