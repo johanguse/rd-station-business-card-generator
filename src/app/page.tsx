@@ -11,8 +11,8 @@ export default function Home() {
       <Header />
 
       <main className="flex items-center bg-primary-light">
-        <div className="container mx-auto">
-          <h1 className="text-center">Gerador de Cartão de Visita</h1>
+        <div className="container mx-auto space-y-10">
+          <h1 className="mt-10 text-center">Gerador de Cartão de Visita</h1>
           <p className="text-center">
             Crie grátis seu cartão de visita em passos rápidos! Você o insere no
             Instagram e demais canais digitais.
@@ -51,20 +51,22 @@ export default function Home() {
                 placeholder="nome@email.com"
                 required={true}
               />
-              <ul className="list-disc px-8">
-                <li>
-                  Ao preencher o formulário, concordo * em receber comunicações
-                  de acordo com meus interesses.
-                </li>
-                <li>
-                  Ao informar meus dados, eu concordo com a Política de
-                  privacidade.
-                </li>
-              </ul>
-              <p>
-                * Você pode alterar suas permissões de comunicação a qualquer
-                tempo.
-              </p>
+              <div className="my-8">
+                <ul className="list-disc px-8">
+                  <li>
+                    Ao preencher o formulário, concordo * em receber
+                    comunicações de acordo com meus interesses.
+                  </li>
+                  <li>
+                    Ao informar meus dados, eu concordo com a Política de
+                    privacidade.
+                  </li>
+                </ul>
+                <p>
+                  * Você pode alterar suas permissões de comunicação a qualquer
+                  tempo.
+                </p>
+              </div>
               <Button text="GERAR CARTÃO GRÁTIS" />
             </form>
           </div>
