@@ -6,8 +6,8 @@ import { z } from 'zod'
 
 import { FormLeadSchema } from '@/lib/form-lead-validation'
 
-import { Button } from './Button'
-import { Icons } from './Icons'
+import { Button } from '@/components/Button'
+import { Icons } from '@/components/Icons'
 
 type createFormLeadData = z.infer<typeof FormLeadSchema>
 
