@@ -18,10 +18,10 @@ const config: Config = {
         gray: {
           DEFAULT: '#7E8A98',
           light: '#97A1AC',
+          disabled: '#CFD3D8',
         },
         dark: '#212429',
-        disabled: '#CFD3D8',
-        light: {
+        grayLight: {
           DEFAULT: '#FFFFFF',
           light: '#F1F3F5',
         },
