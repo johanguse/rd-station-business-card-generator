@@ -1,4 +1,4 @@
-import { absoluteUrl } from '../../lib/utils'
+import { absoluteUrl } from '../../../lib/utils'
 
 describe('absoluteUrl', () => {
   it('should prepend the environment base URL to the path', () => {

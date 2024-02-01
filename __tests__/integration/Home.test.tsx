@@ -6,9 +6,14 @@ describe('Home Page', () => {
   it('renders the home page with all components', () => {
     render(<Home />)
 
-    expect(screen.getByText('Gerador de Cartão de Visita')).toBeInTheDocument()
     expect(
-      screen.getByText('Crie grátis seu cartão de visita em passos rápidos!')
+      screen.getByRole('heading', { name: /Gerador de Cartão de Visita/i })
+    ).toBeInTheDocument()
+
+    expect(
+      screen.getByText(
+        'Crie grátis seu cartão de visita em passos rápidos! Você o insere no Instagram e demais canais digitais.'
+      )
     ).toBeInTheDocument()
 
     expect(screen.getByLabelText('Nome')).toBeInTheDocument()
