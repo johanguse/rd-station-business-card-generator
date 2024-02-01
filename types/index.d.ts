@@ -3,4 +3,5 @@ export type SiteConfig = {
   description: string
   url: string
   ogImage: string
+  author?: string
 }

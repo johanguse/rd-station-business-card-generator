@@ -3,7 +3,7 @@ import { defineConfig, devices } from '@playwright/test'
 
 import { absoluteUrl } from './lib/utils'
 
-const baseURL = absoluteUrl('')
+const baseURL = absoluteUrl('').toString()
 
 /**
  * See https://playwright.dev/docs/test-configuration.

@@ -5,23 +5,13 @@ import { siteConfig } from '@/config/site'
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: siteConfig.name,
-    short_name: siteConfig.description,
+    short_name: 'RD Stations',
     description: siteConfig.description,
-    start_url: '/',
+    start_url: './',
     display: 'standalone',
     background_color: '#4839A3',
     theme_color: '#fff',
     icons: [
-      {
-        src: 'assets/favicons/favicon.ico',
-        sizes: 'any',
-        type: 'image/x-icon',
-      },
-      {
-        src: 'assets/favicons/rd-icon.png',
-        sizes: 'any',
-        type: 'image/png',
-      },
       {
         src: 'assets/favicons/favicon-16x16.png',
         sizes: '16x16',

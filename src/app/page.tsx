@@ -1,16 +1,9 @@
 import Image from 'next/image'
 
-import { siteConfig } from '@/config/site'
-
 import Button from '@/components/Button'
 import Footer from '@/components/Footer'
 import FormField from '@/components/FormField'
 import Header from '@/components/Header'
-
-export const metadata = {
-  title: siteConfig.name,
-  description: siteConfig.description,
-}
 
 export default function Home() {
   return (

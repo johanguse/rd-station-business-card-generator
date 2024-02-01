@@ -3,6 +3,10 @@
  * @param path - The path to be appended to the base URL.
  * @returns A complete URL string.
  */
-export function absoluteUrl(path: string) {
-  return `${process.env.NEXT_PUBLIC_APP_URL}${path}`
+export function absoluteUrl(path: string): URL {
+  const baseUrl = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : `http://localhost:${process.env.PORT || '3000'}`
+
+  return new URL(path, baseUrl)
 }
