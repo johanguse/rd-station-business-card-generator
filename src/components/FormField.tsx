@@ -3,8 +3,8 @@ interface FormFieldProps {
   label: string
   type: string
   placeholder: string
-  required: boolean
   name: string
+  errors: any
 }
 
 export default function FormField({
@@ -12,8 +12,8 @@ export default function FormField({
   label,
   type,
   placeholder,
-  required,
   name,
+  errors,
 }: FormFieldProps) {
   return (
     <div className="mb-4">
@@ -25,9 +25,9 @@ export default function FormField({
         name={name}
         type={type}
         placeholder={placeholder}
-        required={required}
         className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
       />
+      {errors[name] && <span>{errors[name].message}</span>}
     </div>
   )
 }

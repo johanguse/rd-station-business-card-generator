@@ -27,6 +27,7 @@ const config: Config = {
         grayLight: {
           DEFAULT: '#FFFFFF',
           light: '#F1F3F5',
+          placeholder: '#636E7C',
         },
       },
       fontFamily: {
@@ -53,6 +54,14 @@ const config: Config = {
       fontWeight: {
         black: '900',
         extrabold: '800',
+      },
+      screens: {
+        xs: '360px',
+        sm: '600px',
+        md: '728px',
+        lg: '984px',
+        xl: '1240px',
+        '2xl': '1496px',
       },
     },
   },

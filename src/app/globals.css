@@ -7,9 +7,3 @@
   --color-primary-light: #6c5ae0;
   --color-secondary: #f2bf4e;
 }
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
