@@ -1,30 +1,36 @@
 import { absoluteUrl } from '../../../lib/utils'
 
 describe('absoluteUrl', () => {
-  it('should prepend the environment base URL to the path', () => {
-    process.env.NEXT_PUBLIC_APP_URL = 'https://myapp.com'
+  const originalEnv = process.env
 
-    const path = '/api/data'
-    const url = absoluteUrl(path)
-
-    expect(url).toBe('https://myapp.com/api/data')
+  beforeEach(() => {
+    jest.resetModules()
+    process.env = { ...originalEnv }
   })
 
-  it('should handle a missing trailing slash in the environment base URL', () => {
-    process.env.NEXT_PUBLIC_APP_URL = 'https://myapp.com'
-
-    const path = '/api/data'
-    const url = absoluteUrl(path)
-
-    expect(url).toBe('https://myapp.com/api/data')
+  afterAll(() => {
+    process.env = originalEnv
   })
 
-  it('should handle an absolute path without a leading slash', () => {
-    process.env.NEXT_PUBLIC_APP_URL = 'https://myapp.com/'
+  it('should create an absolute URL using VERCEL_URL when defined', () => {
+    process.env.VERCEL_URL = 'myapp.vercel.app'
+    const path = '/api/data'
+    const result = absoluteUrl(path)
+    expect(result.href).toBe('https://myapp.vercel.app/api/data')
+  })
 
-    const path = 'api/data'
-    const url = absoluteUrl(path)
+  it('should create an absolute URL using localhost and default port when VERCEL_URL is not defined', () => {
+    delete process.env.VERCEL_URL
+    const path = '/api/data'
+    const result = absoluteUrl(path)
+    expect(result.href).toBe('http://localhost:3000/api/data')
+  })
 
-    expect(url).toBe('https://myapp.com/api/data')
+  it('should create an absolute URL using localhost and custom PORT when defined', () => {
+    delete process.env.VERCEL_URL
+    process.env.PORT = '5000'
+    const path = '/api/data'
+    const result = absoluteUrl(path)
+    expect(result.href).toBe('http://localhost:5000/api/data')
   })
 })

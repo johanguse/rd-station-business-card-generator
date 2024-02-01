@@ -17,9 +17,12 @@
         "name": "next",
       },
     ],
+    "baseUrl": ".",
     "paths": {
       "@/components/*": ["./src/components/*"],
-      "@/lib/*": ["./src/lib/*"],
+      "@/config/*": ["./config/*"],
+      "@/lib/*": ["./lib/*"],
+      "@/types/*": ["./types/*"],
       "/src/*": ["./src/*"],
     },
   },

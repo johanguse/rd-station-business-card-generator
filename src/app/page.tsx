@@ -10,13 +10,15 @@ export default function Home() {
     <main>
       <Header />
 
-      <main className="flex items-center bg-primary-light">
+      <main className="flex items-center bg-gradient-main">
         <div className="container mx-auto space-y-10">
-          <h1 className="mt-10 text-center">Gerador de Cartão de Visita</h1>
-          <p className="text-center">
-            Crie grátis seu cartão de visita em passos rápidos! Você o insere no
-            Instagram e demais canais digitais.
-          </p>
+          <div className="text-white">
+            <h1 className="mt-10 text-center">Gerador de Cartão de Visita</h1>
+            <p className="text-center">
+              Crie grátis seu cartão de visita em passos rápidos! Você o insere
+              no Instagram e demais canais digitais.
+            </p>
+          </div>
           <div className="flex w-full flex-col">
             <Image
               priority
