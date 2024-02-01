@@ -10,16 +10,18 @@ export default function Home() {
     <main>
       <Header />
 
-      <main className="flex items-center bg-gradient-main">
-        <div className="container mx-auto space-y-10">
+      <main className="flex items-center bg-gradient-main px-6">
+        <div className="container mx-auto space-y-10 py-10">
           <div className="text-white">
-            <h1 className="mt-10 text-center">Gerador de Cartão de Visita</h1>
+            <h1 className="mt-10 text-center text-4xl">
+              Gerador de Cartão de Visita
+            </h1>
             <p className="text-center">
               Crie grátis seu cartão de visita em passos rápidos! Você o insere
               no Instagram e demais canais digitais.
             </p>
           </div>
-          <div className="flex w-full flex-col">
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
             <Image
               priority
               src="/assets/images/board-painting.svg"
@@ -28,7 +30,7 @@ export default function Home() {
               height={198}
               className="mx-auto"
             />
-            <form className="mb-4 w-full p-4">
+            <form className="w-full">
               <FormField
                 id="name"
                 name="name"

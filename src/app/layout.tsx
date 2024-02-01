@@ -1,10 +1,17 @@
-import { Inter } from 'next/font/google'
+import { Darker_Grotesque, Nunito_Sans } from 'next/font/google'
 
 import { siteConfig } from '@/config/site'
 
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const nunito = Nunito_Sans({ subsets: ['latin'], weight: ['400', '700'] })
+
+const darkerGrotesque = Darker_Grotesque({
+  subsets: ['latin'],
+  weight: ['700', '900'],
+  variable: '--font-darker-grotesque',
+  display: 'swap',
+})
 
 export const metadata = {
   title: {
@@ -56,7 +63,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${nunito.className} ${darkerGrotesque.variable}`}>
+        {children}
+      </body>
     </html>
   )
 }
