@@ -8,18 +8,20 @@ import { FormLeadSchema } from '@/lib/form-lead-validation'
 
 import { Button } from '@/components/Button'
 
-type createFormLeadData = z.infer<typeof FormLeadSchema>
+import InputField from './InputField'
+
+type CreateFormLeadData = z.infer<typeof FormLeadSchema>
 
 export default function FormLead() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<createFormLeadData>({
+  } = useForm<CreateFormLeadData>({
     resolver: zodResolver(FormLeadSchema),
   })
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: CreateFormLeadData) => {
     console.log(data)
   }
 
@@ -27,50 +29,32 @@ export default function FormLead() {
     <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-x-8 md:gap-y-4">
         <div className="col-span-2">
-          <label htmlFor="name" className="mb-2 block text-white">
-            Nome*
-          </label>
-          <input
-            {...register('name')}
-            className={`w-full appearance-none rounded border px-3 py-2 leading-tight text-grayLight-placeholder focus:outline-none ${errors.name ? 'border-rose-500' : ''}`}
+          <InputField
+            label="Nome"
+            name="name"
+            errors={errors}
+            register={register}
             placeholder="Seu nome"
           />
-          {errors.name && (
-            <span className="text-base-xs text-rose-300">
-              {errors.name.message}
-            </span>
-          )}
         </div>
 
         <div className="col-span-2 lg:col-span-1">
-          <label htmlFor="phone" className="mb-2 block text-white">
-            Telefone*
-          </label>
-          <input
-            {...register('phone')}
-            className={`w-full appearance-none rounded border px-3 py-2 leading-tight text-grayLight-placeholder focus:outline-none ${errors.phone ? 'border-rose-500' : ''}`}
+          <InputField
+            label="Telefone"
+            name="phone"
+            errors={errors}
+            register={register}
             placeholder="(00) 00000-0000"
           />
-          {errors.phone && (
-            <span className="text-base-xs text-rose-300">
-              {errors.phone.message}
-            </span>
-          )}
         </div>
         <div className="col-span-2 lg:col-span-1">
-          <label htmlFor="email" className="mb-2 block text-white">
-            E-mail*
-          </label>
-          <input
-            {...register('email')}
-            className={`w-full appearance-none rounded border px-3 py-2 leading-tight text-grayLight-placeholder focus:outline-none ${errors.email ? 'border-rose-500' : ''}`}
+          <InputField
+            label="E-mail"
+            name="email"
+            errors={errors}
+            register={register}
             placeholder="nome@email.com"
           />
-          {errors.email && (
-            <span className="text-base-xs text-rose-300">
-              {errors.email.message}
-            </span>
-          )}
         </div>
         <div className="col-span-2 my-3 text-base-xs text-white">
           <ul className="mb-4 list-disc px-5">
