@@ -12,7 +12,11 @@ import InputField from './InputField'
 
 type CreateFormLeadData = z.infer<typeof FormLeadSchema>
 
-export default function FormLead() {
+interface FormLeadProps {
+  onSubmit: (data: CreateFormLeadData) => void
+}
+
+export default function FormLead({ onSubmit }: FormLeadProps) {
   const {
     register,
     handleSubmit,
@@ -21,12 +25,17 @@ export default function FormLead() {
     resolver: zodResolver(FormLeadSchema),
   })
 
-  const onSubmit = (data: CreateFormLeadData) => {
-    console.log(data)
+  const handleSubmitWithValidation = (data: CreateFormLeadData) => {
+    console.log('Form data submitted:', data)
+    //onSubmit(data)
   }
 
   return (
-    <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className="w-full"
+      onSubmit={handleSubmit(handleSubmitWithValidation)}
+      data-testid="form-lead"
+    >
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-x-8 md:gap-y-4">
         <div className="col-span-2">
           <InputField

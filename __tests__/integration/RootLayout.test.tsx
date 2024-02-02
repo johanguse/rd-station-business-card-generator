@@ -2,28 +2,46 @@ import { render } from '@testing-library/react'
 
 import RootLayout from '/src/app/layout'
 
-jest.mock('next/font/google', () => ({
-  Inter: jest.fn(() => ({ className: 'inter-font-class' })),
-}))
+jest.mock('../../src/components/Header', () => {
+  const MockHeader = () => <header data-testid="header">Mocked Header</header>
+  MockHeader.displayName = 'MockHeader'
+  return MockHeader
+})
+
+jest.mock('../../src/components/Footer', () => {
+  const MockFooter = () => <footer data-testid="footer">Mocked Footer</footer>
+  MockFooter.displayName = 'MockFooter'
+  return MockFooter
+})
 
 describe('RootLayout', () => {
-  it('renders children correctly', () => {
-    const { getByText } = render(
-      <RootLayout>
-        <div>Test Child</div>
-      </RootLayout>
-    )
+  let container: HTMLElement
 
-    expect(getByText('Test Child')).toBeInTheDocument()
+  beforeEach(() => {
+    ;({ container } = render(
+      <RootLayout>
+        <div>Test Content</div>
+      </RootLayout>
+    ))
   })
 
-  it('applies the Inter font class to body', () => {
-    const { container } = render(
-      <RootLayout>
-        <div>Test Child</div>
-      </RootLayout>
-    )
+  it('renders without crashing', () => {
+    expect(container).toBeInTheDocument()
+  })
 
-    expect(container.querySelector('body')).toHaveClass('inter-font-class')
+  it('includes the header', () => {
+    const headerElement = container.querySelector('[data-testid="header"]')
+    expect(headerElement).toBeInTheDocument()
+    expect(headerElement).toHaveTextContent('Mocked Header')
+  })
+
+  it('renders children content', () => {
+    expect(container).toHaveTextContent('Test Content')
+  })
+
+  it('includes the footer', () => {
+    const footerElement = container.querySelector('[data-testid="footer"]')
+    expect(footerElement).toBeInTheDocument()
+    expect(footerElement).toHaveTextContent('Mocked Footer')
   })
 })

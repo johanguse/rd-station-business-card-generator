@@ -35,7 +35,9 @@ export default function InputField({
         placeholder={placeholder}
       />
       {errorMessage && (
-        <span className="text-base-xs text-rose-300">{errorMessage}</span>
+        <span className="text-base-xs text-rose-300" role="alert">
+          {errorMessage}
+        </span>
       )}
     </div>
   )
