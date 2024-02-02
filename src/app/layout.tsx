@@ -2,6 +2,9 @@ import { Darker_Grotesque, Nunito_Sans } from 'next/font/google'
 
 import { siteConfig } from '@/config/site'
 
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
+
 import './globals.css'
 
 const nunito = Nunito_Sans({ subsets: ['latin'], weight: ['400', '700'] })
@@ -15,7 +18,7 @@ const darkerGrotesque = Darker_Grotesque({
 
 export const metadata = {
   title: {
-    default: siteConfig.name,
+    default: `${siteConfig.name} | ${siteConfig.description}`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -35,7 +38,7 @@ export const metadata = {
   metadataBase: new URL(siteConfig.url),
   openGraph: {
     type: 'website',
-    locale: 'pt',
+    locale: 'pt-BR',
     url: siteConfig.url,
     title: siteConfig.name,
     description: siteConfig.description,
@@ -62,9 +65,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body className={`${nunito.className} ${darkerGrotesque.variable}`}>
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   )

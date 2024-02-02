@@ -52,8 +52,8 @@ const config: Config = {
         'base-xs': ['12px', { lineHeight: '150%' }],
       },
       fontWeight: {
-        black: '900',
-        extrabold: '800',
+        black: '800',
+        extrabold: '900',
       },
       screens: {
         xs: '360px',

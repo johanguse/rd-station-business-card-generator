@@ -1,210 +1,119 @@
 'use client'
 
-import {
-  ButtonHTMLAttributes,
-  ComponentType,
-  DetailedHTMLProps,
-  FC,
-  ForwardRefRenderFunction,
-  HTMLAttributeAnchorTarget,
-  InputHTMLAttributes,
-  PropsWithChildren,
-  SVGProps,
-  forwardRef,
-  useMemo,
-} from 'react'
+import * as React from 'react'
 
 import Link, { LinkProps } from 'next/link'
 
-import { Loader2, LucideProps } from 'lucide-react'
-import { always, cond, equals } from 'ramda'
+import { type VariantProps, cva } from 'class-variance-authority'
+import { ChevronLeft } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
 
-type HTMLButtonProps = DetailedHTMLProps<
-  ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
->
-export type ButtonVariant =
-  | 'primary'
-  | 'secondary'
-  | 'tertiary'
-  | 'danger'
-  | 'link'
+import { Icons } from '@/components/Icons'
 
-type ButtonProps<NativeProps = {}> = PropsWithChildren & {
-  labelToken?: string
-  className?: string
-  tokenArgs?: { [key: string]: any }
+export type ButtonVariant = 'default' | 'primary' | 'secondary' | 'link'
+
+const buttonClass =
+  ' font-Nunito_Sans px-6 py-4 inline-flex items-center justify-center border-2 border-black text-center text-xl font-semibold uppercase transition-colors duration-200 ease-in-out after:absolute after:content-[""] after:top-[100%] after:w-full after:box-border after:h-0 after:border-t-4 after:border-black'
+
+const buttonVariants = cva('relative ', {
+  variants: {
+    variant: {
+      default: 'bg-secondary text-foreground' + buttonClass,
+      primary: 'bg-blue-500 text-white' + buttonClass,
+      secondary: 'bg-white text-black' + buttonClass,
+      link: 'bg-transparent text-blue-500 underline',
+    },
+  },
+})
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean
   href?: string
-  target?: HTMLAttributeAnchorTarget
-  Icon?: ComponentType<SVGProps<SVGSVGElement> & LucideProps>
-  iconPlacement?: 'left' | 'right'
-  iconSize?: 'sm' | 'md'
-  disabled?: boolean
-  variant?: ButtonVariant
-  download?: any
-  loading?: boolean
-} & NativeProps
+  target?: React.HTMLAttributeAnchorTarget
+  iconPosition?: 'left' | 'right'
+  customIcon?: React.ReactNode
+}
 
-const getButtonColorClasses = cond<ButtonVariant[], string>([
-  [
-    equals<ButtonVariant>('primary'),
-    always(
-      `bg-gray-900 text-white border border-gray-900 
-        dark:bg-white dark:text-gray-900
-        hover:bg-white hover:text-gray-900
-          dark:hover:bg-gray-900 dark:hover:text-white dark:hover:border-white
-        active:bg-gray-200 
-          dark:active:bg-gray-800 
-        disabled:bg-gray-200 disabled:text-gray-900 disabled:cursor-not-allowed
-          dark:disabled:bg-gray-900 dark:disabled:text-white dark:disabled:border-white
-        focus:ring focus:ring-purple-200 focus:ring-opacity-50 
-          dark:focus:ring-purple-600 text-sm font-medium
-      `
-    ),
-  ],
-  [
-    equals<ButtonVariant>('secondary'),
-    always(
-      `bg-white text-gray-600 border border-gray-300 
-        dark:bg-black dark:border-gray-600 dark:text-gray-300
-        hover:text-gray-900 hover:border-gray-900
-          dark:hover:text-white dark:hover:border-white
-        active:bg-gray-200 
-          dark:active:bg-gray-700 text-sm font-medium
-      `
-    ),
-  ],
-  [
-    equals<ButtonVariant>('tertiary'),
-    always(`
-    text-purple-700 dark:text-purple-300 px-3 py-1
-      hover:bg-gray-100  dark:hover:bg-gray-800 text-sm font-medium
-  `),
-  ],
-  [
-    equals<ButtonVariant>('danger'),
-    always(
-      `bg-rose-600 text-white border border-rose-700 
-        hover:bg-white/25 hover:text-pink-700
-          dark:hover:bg-gray-900/25 dark:hover:text-rose-600
-        active:bg-rose-50 
-        disabled:bg-gray-200 disabled:text-gray-900 disabled:cursor-not-allowed
-          dark:disabled:bg-gray-900 dark:disabled:text-white dark:disabled:border-white text-sm font-medium
-        
-  `
-    ),
-  ],
-  [
-    equals<ButtonVariant>('link'),
-    always(`
-    text-primary px-3 py-1 text-sm font-medium hover:underline
-  `),
-  ],
-])
+const getIconComponent = (variant: ButtonVariant) => {
+  switch (variant) {
+    case 'primary':
+      return <Icons.arrowLeftLong />
+    case 'secondary':
+      return <Icons.arrowDownload />
+    case 'link':
+      return <ChevronLeft />
+    default:
+      return null
+  }
+}
 
-export const getButtonStyles = (variant: ButtonVariant, className?: string) =>
-  cn(
-    'group relative flex cursor-pointer items-center rounded-md px-4 py-3',
-    getButtonColorClasses(variant),
-    className
-  )
+const Button = React.forwardRef<
+  HTMLButtonElement | HTMLAnchorElement,
+  ButtonProps
+>(
+  (
+    {
+      className,
+      variant,
+      asChild = false,
+      children,
+      href,
+      target,
+      iconPosition = 'left',
+      customIcon,
+      ...props
+    },
+    ref
+  ) => {
+    const effectiveVariant: ButtonVariant = variant || 'default'
+    const IconComponent = customIcon || getIconComponent(effectiveVariant)
 
-export const Button: FC<ButtonProps<HTMLButtonProps | LinkProps>> = ({
-  labelToken,
-  tokenArgs,
-  className,
-  children,
-  href,
-  Icon,
-  iconPlacement = 'left',
-  iconSize = 'md',
-  variant = 'primary',
-  download,
-  loading,
-  target,
-  ...props
-}) => {
-  const iconPlacementRight = iconPlacement === 'right'
-  const classes = useMemo(
-    () =>
-      cn(
-        'group relative flex cursor-pointer items-center rounded-md px-4 py-3 font-medium',
-        getButtonColorClasses(variant),
-        { 'flex-row-reverse': iconPlacement === 'right' },
-        className
-      ),
-    [className, variant, iconPlacement]
-  )
+    const content = (
+      <>
+        {iconPosition === 'left' && IconComponent && (
+          <span className="mr-2">{IconComponent}</span>
+        )}
+        {children}
+        {iconPosition === 'right' && IconComponent && (
+          <span className="ml-2">{IconComponent}</span>
+        )}
+      </>
+    )
 
-  const content = (
-    <>
-      {Icon && (
-        <Icon
+    if (href && variant === 'link') {
+      return (
+        <Link
+          {...{ href, target }}
+          {...(props as LinkProps)}
           className={cn(
-            'size-5 stroke-2',
-            {
-              'size-5': iconSize === 'md',
-              'size-4': iconSize === 'sm',
-              invisible: loading,
-            },
-            iconPlacementRight ? 'ml-2' : 'mr-2'
+            buttonVariants({ variant: effectiveVariant }),
+            className,
+            'inline-flex w-full items-center justify-center'
           )}
-        />
-      )}
-      <span className={cn({ invisible: loading })}>
-        {children ?? labelToken}
-      </span>
-      {loading && variant !== 'tertiary' && (
-        <div className="absolute inset-0 flex items-center justify-center">
-          <Loader2 className="size-8 animate-spin" />
-        </div>
-      )}
-    </>
-  )
+        >
+          {content}
+        </Link>
+      )
+    }
 
-  if (href) {
     return (
-      <Link {...{ href, target }} {...(props as LinkProps)} className={classes}>
+      <button
+        className={cn(
+          buttonVariants({ variant: effectiveVariant }),
+          className,
+          'inline-flex w-full items-center justify-center'
+        )}
+        {...props}
+      >
         {content}
-      </Link>
+      </button>
     )
   }
-  return (
-    <button {...(props as HTMLButtonProps)} className={classes}>
-      {content}
-    </button>
-  )
-}
+)
 
-type InputSubmitProps = DetailedHTMLProps<
-  InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
->
+Button.displayName = 'Button'
 
-const SubmitButtonBase: ForwardRefRenderFunction<
-  HTMLInputElement,
-  ButtonProps<InputSubmitProps>
-> = (
-  { labelToken, tokenArgs, className, variant = 'primary', loading, ...props },
-  ref
-) => {
-  const classes = useMemo(
-    () => getButtonStyles(variant, className),
-    [variant, className]
-  )
-
-  return (
-    <input
-      type="submit"
-      className={classes}
-      disabled={loading}
-      value={labelToken ?? tokenArgs?.label}
-      {...props}
-      ref={ref}
-    />
-  )
-}
-
-export const SubmitButton = forwardRef(SubmitButtonBase)
+export { Button, buttonVariants }

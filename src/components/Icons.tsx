@@ -7,16 +7,33 @@ export type Icon = LucideIcon
 export const Icons = {
   arrowLeftLong: ({ ...props }: LucideProps) => (
     <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      aria-hidden="true"
+      focusable="false"
       width="17"
       height="9"
       viewBox="0 0 17 9"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <path
-        d="M12.3851 0.143408L16.359 4.15616C16.547 4.34604 16.547 4.65392 16.359 4.84384L12.3851 8.85659C12.0818 9.16293 11.5631 8.94598 11.5631 8.51277V5.63457H0.981533C0.715606 5.63457 0.5 5.41685 0.5 5.14832V3.85164C0.5 3.58311 0.715606 3.36539 0.981533 3.36539H11.5631V0.487188C11.5631 0.0540187 12.0818 -0.162931 12.3851 0.143408Z"
         fill="#100C27"
+        d="m12.385.143 3.974 4.013a.49.49 0 0 1 0 .688l-3.974 4.013a.48.48 0 0 1-.822-.344V5.635H.982A.484.484 0 0 1 .5 5.148V3.852c0-.269.216-.487.482-.487h10.581V.487a.48.48 0 0 1 .822-.344Z"
       />
+    </svg>
+  ),
+  arrowDownload: ({ ...props }: LucideProps) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      aria-hidden="true"
+      focusable="false"
+      width="15"
+      height="25"
+      viewBox="0 0 24 25"
+      {...props}
+    >
+      <path fill="#97A1AC" d="m12 20.5-5-5v-1h3v-10h4v10h3v1l-5 5Z" />
     </svg>
   ),
 }
