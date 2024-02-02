@@ -24,7 +24,7 @@ export default function Home() {
             height={198}
             className="mx-auto w-[470px] md:ml-0"
           />
-          <FormLead onSubmit={() => {}} />
+          <FormLead />
         </div>
       </div>
     </main>

@@ -12,11 +12,7 @@ import InputField from './InputField'
 
 type CreateFormLeadData = z.infer<typeof FormLeadSchema>
 
-interface FormLeadProps {
-  onSubmit: (data: CreateFormLeadData) => void
-}
-
-export default function FormLead({ onSubmit }: FormLeadProps) {
+export default function FormLead() {
   const {
     register,
     handleSubmit,
