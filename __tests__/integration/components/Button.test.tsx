@@ -4,10 +4,7 @@ import userEvent from '@testing-library/user-event'
 
 import { Button } from '@/components/Button'
 
-// Adjust the import path to where your Button component is located
-
 describe('Button Component', () => {
-  // Test default button rendering
   it('renders a default button', () => {
     render(<Button>Default Button</Button>)
     const button = screen.getByRole('button', { name: 'Default Button' })
@@ -15,7 +12,6 @@ describe('Button Component', () => {
     expect(button).toHaveClass('bg-secondary text-foreground')
   })
 
-  // Test primary button rendering
   it('renders a primary button', () => {
     render(<Button variant="primary">Primary Button</Button>)
     const button = screen.getByRole('button', { name: 'Primary Button' })
@@ -23,7 +19,6 @@ describe('Button Component', () => {
     expect(button).toHaveClass('bg-blue-500 text-white')
   })
 
-  // Test secondary button rendering
   it('renders a secondary button', () => {
     render(<Button variant="secondary">Secondary Button</Button>)
     const button = screen.getByRole('button', { name: 'Secondary Button' })
@@ -31,7 +26,6 @@ describe('Button Component', () => {
     expect(button).toHaveClass('bg-white text-black')
   })
 
-  // Test link button rendering
   it('renders a link button', () => {
     render(
       <Button href="https://example.com" variant="link">
@@ -43,7 +37,6 @@ describe('Button Component', () => {
     expect(button).toHaveClass('bg-transparent text-blue-500 underline')
   })
 
-  // Verify that custom icon is rendered if passed
   it('renders with a custom icon when provided', () => {
     const CustomIcon = () => <span data-testid="custom-icon"></span>
     render(<Button customIcon={<CustomIcon />}>Button with Custom Icon</Button>)
@@ -51,7 +44,6 @@ describe('Button Component', () => {
     expect(icon).toBeInTheDocument()
   })
 
-  // Checking if clicking the button calls the event handler
   it('calls onClick handler when clicked', async () => {
     const handleClick = jest.fn()
     const user = userEvent.setup()
@@ -61,7 +53,6 @@ describe('Button Component', () => {
     expect(handleClick).toHaveBeenCalledTimes(1)
   })
 
-  // Ensure correct icon placement on left
   it('places the icon on the left when iconPosition is set to "left"', () => {
     render(
       <Button variant="primary" iconPosition="left">
@@ -75,7 +66,6 @@ describe('Button Component', () => {
     expect(iconWrapper).toHaveClass('mr-2')
   })
 
-  // Ensure correct icon placement on right
   it('places the icon on the right when iconPosition is set to "right"', () => {
     render(
       <Button variant="primary" iconPosition="right">

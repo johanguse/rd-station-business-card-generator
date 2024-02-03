@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import FormLead from '@/components/FormLead'
 
-export default function Home() {
+export default function HomePage() {
   return (
     <main className="flex items-center bg-gradient-main px-4">
       <div className="container mx-auto space-y-10 py-20">

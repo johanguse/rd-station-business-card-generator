@@ -21,7 +21,15 @@ const customJestConfig: Config.InitialOptions = {
     },
   },
 
-  testPathIgnorePatterns: ['<rootDir>/(node_modules|dist|coverage|build)/'],
+  testPathIgnorePatterns: [
+    '<rootDir>/(node_modules|dist|coverage|build)/',
+    '<rootDir>/src/app/layout.tsx',
+  ],
+
+  coveragePathIgnorePatterns: [
+    '<rootDir>/(node_modules|dist|coverage|build)/',
+    '<rootDir>/src/app/layout.tsx',
+  ],
 
   collectCoverage: true,
   collectCoverageFrom: [
@@ -43,6 +51,14 @@ const customJestConfig: Config.InitialOptions = {
   },
 
   moduleDirectories: ['node_modules', 'src'],
+
+  moduleNameMapper: {
+    '^@/components/(.*)$': '<rootDir>/src/components/$1',
+    '^@/config/(.*)$': '<rootDir>/config/$1',
+    '^@/lib/(.*)$': '<rootDir>/lib/$1',
+    '^@/store/(.*)$': '<rootDir>/src/store/$1',
+    '^@/types/(.*)$': '<rootDir>/types/$1',
+  },
 
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 

@@ -14,7 +14,7 @@ import { Icons } from '@/components/Icons'
 export type ButtonVariant = 'default' | 'primary' | 'secondary' | 'link'
 
 const buttonClass =
-  ' font-Nunito_Sans px-6 py-4 inline-flex items-center justify-center border-2 border-black text-center text-xl font-semibold uppercase transition-colors duration-200 ease-in-out after:absolute after:content-[""] after:top-[100%] after:w-full after:box-border after:h-0 after:border-t-4 after:border-black'
+  ' font-Nunito_Sans px-6 py-4 inline-flex items-center w-full justify-center border-2 border-black text-center text-xl font-semibold uppercase transition-colors duration-200 ease-in-out after:absolute after:content-[""] after:top-[100%] after:w-full after:box-border after:h-0 after:border-t-4 after:border-black'
 
 const buttonVariants = cva('relative ', {
   variants: {
@@ -22,7 +22,7 @@ const buttonVariants = cva('relative ', {
       default: 'bg-secondary text-foreground' + buttonClass,
       primary: 'bg-blue-500 text-white' + buttonClass,
       secondary: 'bg-white text-black' + buttonClass,
-      link: 'bg-transparent text-blue-500 underline',
+      link: 'bg-transparent text-blue-500 underline inline-flex w-full items-center justify-center',
     },
   },
 })
@@ -90,8 +90,7 @@ const Button = React.forwardRef<
           {...(props as LinkProps)}
           className={cn(
             buttonVariants({ variant: effectiveVariant }),
-            className,
-            'inline-flex w-full items-center justify-center'
+            className
           )}
         >
           {content}
@@ -101,11 +100,7 @@ const Button = React.forwardRef<
 
     return (
       <button
-        className={cn(
-          buttonVariants({ variant: effectiveVariant }),
-          className,
-          'inline-flex w-full items-center justify-center'
-        )}
+        className={cn(buttonVariants({ variant: effectiveVariant }), className)}
         {...props}
       >
         {content}

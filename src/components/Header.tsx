@@ -9,9 +9,9 @@ export default function Header() {
             priority
             src="/assets/images/logo-rd-station-default.svg"
             alt="Logo RD Station"
-            layout="responsive"
             width={100}
             height={28}
+            className="w-28 sm:w-36"
           />
         </div>
         <p className="font-bold">Gerador de Cartão de Visita</p>

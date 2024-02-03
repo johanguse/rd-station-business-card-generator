@@ -19,9 +19,12 @@
     ],
     "baseUrl": ".",
     "paths": {
+      "@/__mocks__/*": ["./__mocks__/*"],
+      "@/app/*": ["./src/app/*"],
       "@/components/*": ["./src/components/*"],
       "@/config/*": ["./config/*"],
       "@/lib/*": ["./lib/*"],
+      "@/store/*": ["./src/store/*"],
       "@/types/*": ["./types/*"],
       "/src/*": ["./src/*"],
     },

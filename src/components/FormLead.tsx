@@ -1,5 +1,8 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
+
+import { useFormLeadStore } from '@/store/form-lead'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -7,12 +10,12 @@ import { z } from 'zod'
 import { FormLeadSchema } from '@/lib/form-lead-validation'
 
 import { Button } from '@/components/Button'
-
-import InputField from './InputField'
+import InputField from '@/components/InputField'
 
 type CreateFormLeadData = z.infer<typeof FormLeadSchema>
 
 export default function FormLead() {
+  const router = useRouter()
   const {
     register,
     handleSubmit,
@@ -21,9 +24,13 @@ export default function FormLead() {
     resolver: zodResolver(FormLeadSchema),
   })
 
+  const setFormData = useFormLeadStore((state) => state.setFormData)
+
   const handleSubmitWithValidation = (data: CreateFormLeadData) => {
+    //save form data on database
     console.log('Form data submitted:', data)
-    //onSubmit(data)
+    setFormData(data)
+    router.push('/result')
   }
 
   return (
@@ -71,7 +78,15 @@ export default function FormLead() {
               acordo com meus interesses.
             </li>
             <li>
-              Ao informar meus dados, eu concordo com a Política de privacidade.
+              Ao informar meus dados, eu concordo com a{' '}
+              <a
+                href="https://legal.rdstation.com/pt/privacy-policy/"
+                target="_blank"
+                className="underline"
+              >
+                Política de Privacidade
+              </a>
+              .
             </li>
           </ul>
           <p>
@@ -85,7 +100,7 @@ export default function FormLead() {
             variant={'primary'}
             iconPosition="right"
           >
-            GERAR CARTÃO GRÁTIS
+            Gerar cartão grátis
           </Button>
         </div>
       </div>
