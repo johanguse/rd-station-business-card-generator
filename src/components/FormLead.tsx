@@ -37,6 +37,7 @@ export default function FormLead() {
           <InputField
             label="Nome"
             name="name"
+            inputType="text"
             errors={errors}
             register={register}
             placeholder="Seu nome"
@@ -47,6 +48,7 @@ export default function FormLead() {
           <InputField
             label="Telefone"
             name="phone"
+            inputType="tel"
             errors={errors}
             register={register}
             placeholder="(00) 00000-0000"
@@ -56,6 +58,7 @@ export default function FormLead() {
           <InputField
             label="E-mail"
             name="email"
+            inputType="email"
             errors={errors}
             register={register}
             placeholder="nome@email.com"

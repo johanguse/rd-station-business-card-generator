@@ -11,6 +11,7 @@ type InputFieldProps = {
   errors: FieldErrors<CreateFormLeadData>
   register: UseFormRegister<CreateFormLeadData>
   placeholder?: string
+  inputType?: string
 }
 
 export default function InputField({
@@ -19,6 +20,7 @@ export default function InputField({
   errors,
   register,
   placeholder,
+  inputType = 'text',
 }: InputFieldProps) {
   const errorClass = errors[name] ? 'border-rose-500' : ''
   const errorMessage = errors[name]?.message
@@ -29,6 +31,7 @@ export default function InputField({
         {label}*
       </label>
       <input
+        type={inputType}
         id={name}
         {...register(name)}
         className={`w-full appearance-none rounded border px-3 py-2 leading-tight text-grayLight-placeholder focus:outline-none ${errorClass}`}
