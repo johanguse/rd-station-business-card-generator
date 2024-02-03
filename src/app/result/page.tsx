@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import { redirect } from 'next/navigation'
 
 import { useFormLeadStore } from '@/store/form-lead'
 import { ChevronRight } from 'lucide-react'
@@ -10,18 +10,9 @@ import { Button } from '@/components/Button'
 import { Icons } from '@/components/Icons'
 
 export default function ResultPage() {
-  const router = useRouter()
   const formData = useFormLeadStore((state) => state.formData)
   if (!formData) {
-    router.push('/')
-    return (
-      <div className="mx-auto py-20 text-center">
-        <Button variant={'link'} href="/">
-          Gerar cartão
-        </Button>
-        <p>Preencha seus dados na home page</p>
-      </div>
-    )
+    redirect('/')
   }
 
   return (
