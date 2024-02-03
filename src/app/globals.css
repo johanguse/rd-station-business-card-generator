@@ -7,9 +7,15 @@
   --color-primary-light: #6c5ae0;
   --color-secondary: #f2bf4e;
 }
+body {
+  @apply font-sans text-base-sm;
+}
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-darker-grotesque;
 }
