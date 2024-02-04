@@ -60,7 +60,7 @@ export default function FormLead() {
           <InputField
             label="Nome"
             name="name"
-            inputType="text"
+            type="text"
             errors={errors}
             register={register}
             placeholder="Seu nome"
@@ -71,17 +71,18 @@ export default function FormLead() {
           <InputField
             label="Telefone"
             name="phone"
-            inputType="tel"
+            type="tel"
             errors={errors}
             register={register}
             placeholder="(00) 00000-0000"
+            mask="(99) [9]9999-9999"
           />
         </div>
         <div className="col-span-2 lg:col-span-1">
           <InputField
             label="E-mail"
             name="email"
-            inputType="email"
+            type="email"
             errors={errors}
             register={register}
             placeholder="nome@email.com"

@@ -36,7 +36,7 @@ describe('FormLeadSchema', () => {
   it('should not allow a phone number with more than 14 characters', () => {
     const result = FormLeadSchema.safeParse({
       name: 'John Doe',
-      phone: '123456789012345',
+      phone: '1234567890123222334',
       email: 'john@example.com',
     })
 
