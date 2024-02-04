@@ -34,7 +34,7 @@ export default function InputField({
         type={inputType}
         id={name}
         {...register(name)}
-        className={`w-full appearance-none rounded border px-3 py-2 leading-tight text-grayLight-placeholder focus:outline-none ${errorClass}`}
+        className={`w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-text focus:outline-none ${errorClass}`}
         placeholder={placeholder}
       />
       {errorMessage && (

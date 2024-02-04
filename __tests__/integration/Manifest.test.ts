@@ -126,11 +126,7 @@ describe('manifest', () => {
         },
       ],
     }
-
-    // Call the actual manifest function which should now use the mocked siteConfig
     const result = manifest()
-
-    // Perform the assertion
     expect(result).toEqual(expectedManifest)
   })
 })

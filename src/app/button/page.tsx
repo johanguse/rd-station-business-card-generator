@@ -1,55 +1,66 @@
 'use client'
 
-import { useFormLeadStore } from '@/store/form-lead'
 import { CheckIcon } from 'lucide-react'
 
 import { Button } from '@/components/Button'
+import { Icons } from '@/components/Icons'
 
 export default function ResultPage() {
-  const formData = useFormLeadStore((state) => state.formData)
-  if (!formData) {
-    return <div>No data available</div>
-  }
   return (
-    <main className="flex items-center bg-gradient-main px-4">
-      <div className="container mx-auto space-y-10 py-20">
+    <main className="flex items-center bg-white bg-gradient-main px-4">
+      <div className="container mx-auto space-y-6 py-6">
         <div className="my-20">
-          <div>
-            <h2>Form Data:</h2>
-            <p>Name: {formData.name}</p>
-            <p>Phone: {formData.phone}</p>
-            <p>Email: {formData.email}</p>
-          </div>
           <Button type="submit">GERAR CARTÃO GRÁTIS</Button>
           <Button
             type="submit"
-            className="mt-4"
+            className="mt-20"
             variant={'primary'}
             iconPosition="right"
           >
             GERAR CARTÃO GRÁTIS
           </Button>
-          <Button type="submit" className="mt-4" variant={'secondary'}>
-            GERAR CARTÃO GRÁTIS
+          <Button className="mt-20" variant={'secondary'} disabled>
+            GERAR CARTÃO GRÁTIS (secondary)
           </Button>
           <Button
             type="submit"
-            className="mt-4"
+            className="mt-20"
+            variant={'secondary'}
+            iconClassName="w-5 bg-transparent"
+            iconPosition="right"
+            customIcon={<Icons.arrowLeftLong />}
+          >
+            GERAR CARTÃO GRÁTIS
+          </Button>
+          <Button
+            variant={'link'}
+            href="https://app.rdstation.com.br/signup"
+            target="_blank"
+            iconPosition="right"
+            customIcon={<Icons.arrowLeftLong className="text-white" />}
+            className="mx-auto mt-20 flex w-full text-balance font-extrabold uppercase text-white"
+          >
+            Fazer um teste grátis do Rd Station Marketing
+          </Button>
+          <Button
+            type="submit"
+            className="mt-20"
             variant={'link'}
             href="https://app.rdstation.com.br/signup"
             target="_blank"
           >
-            GERAR CARTÃO GRÁTIS
+            Voltar
           </Button>
           <Button
             type="submit"
-            className="mt-4"
+            className="mt-20"
             variant={'link'}
             href="/"
             iconPosition="right"
+            iconClassName="h-6 w-5 bg-transparent"
             customIcon={<CheckIcon size={20} />}
           >
-            GERAR CARTÃO GRÁTIS
+            Voltar a home page
           </Button>
         </div>
       </div>

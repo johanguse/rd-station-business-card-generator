@@ -25,12 +25,23 @@ export default function FormLead() {
   })
 
   const setFormData = useFormLeadStore((state) => state.setFormData)
+  const formError = useFormLeadStore((state) => state.formError)
 
-  const handleSubmitWithValidation = (data: CreateFormLeadData) => {
-    //save form data on database
-    console.log('Form data submitted:', data)
-    setFormData(data)
-    router.push('/result')
+  const { setFormError } = useFormLeadStore((state) => ({
+    setFormError: state.setFormError,
+  }))
+
+  const handleSubmitWithValidation = async (data: CreateFormLeadData) => {
+    try {
+      // Handle data submission here
+      console.log('Form data submitted:', data)
+      setFormData(data)
+      router.push('/result')
+    } catch (error) {
+      if (error instanceof Error) {
+        setFormError({ message: error.message })
+      }
+    }
   }
 
   return (
@@ -40,6 +51,11 @@ export default function FormLead() {
       data-testid="form-lead"
     >
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-x-8 md:gap-y-4">
+        {formError && (
+          <p className="col-span-2 border-rose-500">
+            Error: {formError.message}
+          </p>
+        )}
         <div className="col-span-2">
           <InputField
             label="Nome"
