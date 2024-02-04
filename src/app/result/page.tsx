@@ -47,7 +47,8 @@ export default function ResultPage() {
             <Button variant={'secondary'}>Baixar cartão</Button>
             <Button
               variant={'link'}
-              href="/"
+              href="https://app.rdstation.com.br/signup"
+              target="_blank"
               iconPosition="right"
               customIcon={<ChevronRight />}
               className="mx-auto flex w-fit bg-white"
