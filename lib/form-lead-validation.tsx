@@ -5,7 +5,7 @@ export const FormLeadSchema = z.object({
   phone: z
     .string()
     .min(10, 'Telefone deve ter pelo menos 10 caracteres.')
-    .max(14),
+    .max(17, 'Telefone inválido.'),
   email: z
     .string()
     .min(2, 'E-mail deve ter pelo menos 2 caracteres.')
