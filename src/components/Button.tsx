@@ -12,7 +12,7 @@ import { Icons } from '@/components/Icons'
 export type ButtonVariant = 'default' | 'primary' | 'secondary' | 'link'
 
 const buttonClass =
-  ' font-Nunito_Sans px-6 py-4 inline-flex items-center w-full justify-center border-2 border-black disabled:border-gray-medium text-center text-xl font-semibold uppercase transition-colors duration-200 ease-in-out'
+  ' font-Nunito_Sans px-2 py-4 inline-flex items-center w-full justify-center border-2 border-black disabled:border-gray-medium text-center text-xl font-semibold uppercase transition-colors duration-200 ease-in-out'
 
 const disabledButton =
   'cursor-not-allowed bg-grayLight-medium hover:bg-grayLight-medium text-gray-medium'
@@ -33,7 +33,7 @@ const buttonVariants = cva('relative ', {
         afterButtonClass,
       secondary:
         'bg-white hover:bg-grayLight-light' + buttonClass + afterButtonClass,
-      link: 'bg-transparent text-white no-underline inline-flex w-full items-center justify-center hover:underline',
+      link: 'bg-transparent text-white text-center no-underline inline-flex w-full items-center justify-center hover:underline',
     },
   },
 })
