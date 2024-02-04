@@ -75,7 +75,7 @@ export default function FormLead() {
             errors={errors}
             register={register}
             placeholder="(00) 00000-0000"
-            mask="(99) 9999[9]-9999"
+            mask="(99) [9]9999-9999"
           />
         </div>
         <div className="col-span-2 lg:col-span-1">
