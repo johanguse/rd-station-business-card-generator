@@ -8,26 +8,31 @@ const config: Config = {
         'gradient-main':
           'linear-gradient(93.82deg, var(--color-primary) -1.6%, #806EFF 105.56%)',
       },
+      boxShadow: {
+        md: '0px 8px 18px 0px rgba(33, 36, 41, 0.16)',
+      },
       colors: {
         primary: {
           DEFAULT: '#4839A3',
           light: '#6C5AE0',
+          superLight: '#D8D9FD',
           dark: '#100C27',
         },
         secondary: {
           DEFAULT: '#F2BF4E',
           light: '#F4CA6D',
+          highlight: '#F8DCA0',
         },
         gray: {
           DEFAULT: '#7E8A98',
-          light: '#97A1AC',
-          disabled: '#CFD3D8',
+          medium: '#97A1AC',
+          text: '#636E7C',
         },
         dark: '#212429',
         grayLight: {
           DEFAULT: '#FFFFFF',
+          medium: '#E1E4E8',
           light: '#F1F3F5',
-          placeholder: '#636E7C',
         },
       },
       fontFamily: {

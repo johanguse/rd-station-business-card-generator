@@ -4,7 +4,7 @@ import FormLead from '@/components/FormLead'
 
 export default function HomePage() {
   return (
-    <main className="flex items-center bg-gradient-main px-4">
+    <main className="flex grow items-center bg-gradient-main px-4">
       <div className="container mx-auto space-y-10 py-20">
         <div className="text-white">
           <h1 className="mb-6 text-center text-4xl font-black">

@@ -4,7 +4,6 @@ import Image from 'next/image'
 import { redirect } from 'next/navigation'
 
 import { useFormLeadStore } from '@/store/form-lead'
-import { ChevronRight } from 'lucide-react'
 
 import { Button } from '@/components/Button'
 import { Icons } from '@/components/Icons'
@@ -16,7 +15,7 @@ export default function ResultPage() {
   }
 
   return (
-    <main className="flex items-center bg-gradient-main px-4">
+    <main className="flex grow items-center bg-gradient-main px-4">
       <div className="container mx-auto space-y-20 py-20">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 md:grid-cols-2">
           <Image
@@ -27,31 +26,35 @@ export default function ResultPage() {
             height={198}
             className="mx-auto w-[470px] md:ml-0"
           />
-          <div>
+          <div className="grid grid-rows-1 gap-4">
             <Button variant={'link'} href="/" className="w-fit justify-start">
               Gerar outro cartão
             </Button>
-            <div className="rounded bg-white">
-              <div className="flex flex-row p-10">
+            <div className="rounded-3xl bg-white px-0 py-8 shadow-md md:px-6">
+              <div className="flex flex-row px-2 md:px-8">
                 <div className="self-center">
-                  <Icons.rdIcon className="w-20" />
+                  <Icons.rdIcon className="w-16" />
                 </div>
-                <div className="mx-10 flex w-1 bg-primary-light">&nbsp;</div>
-                <div className="grid grid-rows-1 gap-3 px-6 py-4">
+                <div className="mx-2 flex w-1 bg-primary-superLight md:mx-4">
+                  &nbsp;
+                </div>
+                <div className="grid grid-rows-1 gap-6 py-4 pl-2 text-xl-sm">
                   <p>{formData.name}</p>
                   <p>{formData.phone}</p>
                   <p>{formData.email}</p>
                 </div>
               </div>
             </div>
-            <Button variant={'secondary'}>Baixar cartão</Button>
+            <Button variant={'secondary'} disabled>
+              Baixar cartão
+            </Button>
             <Button
               variant={'link'}
               href="https://app.rdstation.com.br/signup"
               target="_blank"
               iconPosition="right"
-              customIcon={<ChevronRight />}
-              className="mx-auto flex w-fit bg-white"
+              customIcon={<Icons.arrowLeftLong className="text-white" />}
+              className="mx-auto mt-4 flex w-full text-balance font-extrabold uppercase text-white"
             >
               Fazer um teste grátis do Rd Station Marketing
             </Button>

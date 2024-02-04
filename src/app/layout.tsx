@@ -66,7 +66,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${nunito.className} ${darkerGrotesque.variable}`}>
+      <body
+        className={`flex min-h-screen flex-col ${nunito.className} ${darkerGrotesque.variable}`}
+      >
         <Header />
         {children}
         <Footer />
