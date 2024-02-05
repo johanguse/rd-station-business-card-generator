@@ -6,7 +6,7 @@ const formDataMock = {
 
 const formDataMockWMask = {
   name: 'John Doe',
-  phone: '(47) [9]1124-5449',
+  phone: '(47) 91124-5449',
   email: 'john@example.com',
 }
 
