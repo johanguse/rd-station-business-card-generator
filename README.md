@@ -23,6 +23,7 @@ The RD Station Front-end Marketing challenge leverages a robust and modern tech 
 - **[Zod](https://github.com/colinhacks/zod)**: A TypeScript-first schema declaration and validation library, ensuring data integrity.
 - **[Zustand](https://github.com/pmndrs/zustand)**: A minimal, yet powerful state management solution for React applications.
 - **[Testing Library](https://testing-library.com/)**: A set of utilities that allow you to test UI components in a user-centric way.
+- **[Playwright](https://playwright.dev/)**: Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API.
 
 To maintain high code quality and ensure that all tests pass, we use GitHub Actions for automated testing. This integration streamlines our development process, allowing for more efficient and effective testing workflows.
 
@@ -122,6 +123,6 @@ We use ESLint and Prettier to ensure code quality and consistency. You can run t
 bun run lint  # You can also use npm, yarn or pnpm if you prefer
 ```
 
-## License
+## 📝 License
 
 This project is licensed under the MIT License.
