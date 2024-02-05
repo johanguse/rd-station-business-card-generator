@@ -2,8 +2,7 @@
   "recommendations": [
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "bradlc.vscode-tailwindcss",
-    "Prisma.prisma"
+    "bradlc.vscode-tailwindcss"
   ],
   "unwantedRecommendations": []
 }
