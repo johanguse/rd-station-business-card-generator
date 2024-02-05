@@ -7,7 +7,12 @@ import Header from '@/components/Header'
 
 import './globals.css'
 
-const nunito = Nunito_Sans({ subsets: ['latin'], weight: ['400', '700'] })
+const nunito = Nunito_Sans({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-nunito',
+  display: 'swap',
+})
 
 const darkerGrotesque = Darker_Grotesque({
   subsets: ['latin'],
@@ -67,7 +72,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`flex min-h-screen flex-col ${nunito.className} ${darkerGrotesque.variable}`}
+        className={`flex min-h-screen flex-col ${nunito.variable} ${darkerGrotesque.variable}`}
       >
         <Header />
         {children}

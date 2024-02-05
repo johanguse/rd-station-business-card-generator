@@ -17,7 +17,7 @@ export default function ResultPage() {
   return (
     <main className="flex grow items-center bg-gradient-main px-4">
       <div className="container mx-auto space-y-20 py-20">
-        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 md:grid-cols-2">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-20 md:grid-cols-2">
           <Image
             priority
             src="/assets/images/board-painting.svg"
@@ -54,9 +54,11 @@ export default function ResultPage() {
               target="_blank"
               iconPosition="right"
               customIcon={<Icons.arrowLeftLong className="text-white" />}
-              className="mx-auto mt-4 flex w-full text-balance font-extrabold uppercase text-white"
+              className="mx-auto mt-4 flex w-fit text-balance font-extrabold uppercase text-white md:w-full"
             >
-              Fazer um teste grátis do Rd Station Marketing
+              <span className="w-56 sm:w-full sm:text-base">
+                Fazer um teste grátis do RD Station Marketing
+              </span>
             </Button>
           </div>
         </div>
