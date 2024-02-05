@@ -24,16 +24,16 @@ const buttonVariants = cva('relative ', {
   variants: {
     variant: {
       default:
-        'bg-secondary text-foreground hover:bg-secondary-highlight' +
+        'bg-secondary text-primary-dark hover:bg-secondary-highlight' +
         buttonClass +
         afterButtonClass,
       primary:
-        'bg-secondary text-foreground hover:bg-secondary-highlight' +
+        'bg-secondary text-primary-dark hover:bg-secondary-highlight' +
         buttonClass +
         afterButtonClass,
       secondary:
         'bg-white hover:bg-grayLight-light' + buttonClass + afterButtonClass,
-      link: 'bg-transparent text-white text-center no-underline inline-flex w-full items-center justify-center hover:underline',
+      link: 'bg-transparent no-underline inline-flex w-full items-center justify-center hover:underline',
     },
   },
 })
@@ -62,7 +62,7 @@ const getIconComponent = (variant: ButtonVariant, iconClassName?: string) => {
         />
       )
     case 'link':
-      return <ChevronLeft className={cn(iconClassName, 'size-4')} />
+      return <ChevronLeft className={cn(iconClassName, 'size-4 sm:size-6')} />
     default:
       return null
   }

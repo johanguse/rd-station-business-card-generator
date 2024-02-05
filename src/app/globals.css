@@ -8,7 +8,8 @@
   --color-secondary: #f2bf4e;
 }
 body {
-  @apply font-sans text-base-sm;
+  font-family: 'Nunito Sans', sans-serif;
+  @apply text-sm;
 }
 
 h1,
@@ -17,5 +18,6 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-darker-grotesque;
+  font-family: 'Darker Grotesque', sans-serif;
+  @apply font-bold;
 }

@@ -17,7 +17,9 @@ export default function Header() {
             />
           </Link>
         </div>
-        <p className="font-bold">Gerador de Cartão de Visita</p>
+        <p className="font-darker-grotesque text-xl-sm-mobile font-bold text-black sm:text-2xl">
+          Gerador de Cartão de Visita
+        </p>
       </div>
     </header>
   )
