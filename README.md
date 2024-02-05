@@ -95,6 +95,12 @@ bun run dev  # You can also use npm, yarn or pnpm if you prefer
 
 ## 🧪 Test
 
+Before run the test make sure you already have installed the Playwright browsers.
+
+```bash
+bun run playwright install  # You can also use npm, yarn or pnpm if you prefer
+```
+
 We have included both unit and end-to-end tests for this project. You can run the tests using the following commands:
 
 ```bash
