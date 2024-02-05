@@ -45,10 +45,11 @@ export default function ResultPage() {
                 </div>
               </div>
             </div>
-            <Button variant={'secondary'} disabled>
+            <Button id="download-card-button" variant={'secondary'} disabled>
               Baixar cartão
             </Button>
             <Button
+              id="test-rd-link"
               variant={'link'}
               href="https://app.rdstation.com.br/signup"
               target="_blank"

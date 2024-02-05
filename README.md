@@ -2,7 +2,7 @@
 
 ![Vercel](http://therealsujitk-vercel-badge.vercel.app/?app=rd-station-business-card-generator) ![License](https://img.shields.io/badge/license-MIT-blue)
 
-![og](.github/logo-rd-station-default.svg)
+<img src=".github/logo-rd-station-default.svg" width="50%" height="auto" alt='RD Station Logo'>
 
 Welcome to the Resultados Digitais Business Card Generator Challenge! In this challenge, you'll embark on an exciting journey to create a digital business card generator application. Users will be able to fill out essential details and craft their personalized business cards. The project focuses on responsiveness, adhering to best practices, and implementing thorough form validation. You'll also ensure that the generated business cards utilize the provided data and implement various user-friendly features. Join us in this engaging challenge and unleash your frontend development skills!
 
@@ -23,6 +23,7 @@ The RD Station Front-end Marketing challenge leverages a robust and modern tech 
 - **[Zod](https://github.com/colinhacks/zod)**: A TypeScript-first schema declaration and validation library, ensuring data integrity.
 - **[Zustand](https://github.com/pmndrs/zustand)**: A minimal, yet powerful state management solution for React applications.
 - **[Testing Library](https://testing-library.com/)**: A set of utilities that allow you to test UI components in a user-centric way.
+- **[Playwright](https://playwright.dev/)**: Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API.
 
 To maintain high code quality and ensure that all tests pass, we use GitHub Actions for automated testing. This integration streamlines our development process, allowing for more efficient and effective testing workflows.
 
@@ -122,6 +123,6 @@ We use ESLint and Prettier to ensure code quality and consistency. You can run t
 bun run lint  # You can also use npm, yarn or pnpm if you prefer
 ```
 
-## License
+## 📝 License
 
 This project is licensed under the MIT License.
