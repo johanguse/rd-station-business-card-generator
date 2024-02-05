@@ -112,6 +112,7 @@ export default function FormLead() {
         </div>
         <div className="col-span-2">
           <Button
+            id="submit-form-lead"
             type="submit"
             className="mt-4"
             variant={'primary'}

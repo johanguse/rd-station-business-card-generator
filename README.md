@@ -2,7 +2,7 @@
 
 ![Vercel](http://therealsujitk-vercel-badge.vercel.app/?app=rd-station-business-card-generator) ![License](https://img.shields.io/badge/license-MIT-blue)
 
-![og](.github/logo-rd-station-default.svg)
+<img src=".github/logo-rd-station-default.svg" width="50%" height="auto" alt='RD Station Logo'>
 
 Welcome to the Resultados Digitais Business Card Generator Challenge! In this challenge, you'll embark on an exciting journey to create a digital business card generator application. Users will be able to fill out essential details and craft their personalized business cards. The project focuses on responsiveness, adhering to best practices, and implementing thorough form validation. You'll also ensure that the generated business cards utilize the provided data and implement various user-friendly features. Join us in this engaging challenge and unleash your frontend development skills!
 
