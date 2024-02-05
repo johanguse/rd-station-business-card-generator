@@ -33,7 +33,6 @@ jest.mock('@/store/form-lead', () => {
       },
       setFormData: jest.fn(),
       setFormError: jest.fn(),
-      // Add other methods or properties as needed
     }),
   }
 })

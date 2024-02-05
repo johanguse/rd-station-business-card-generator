@@ -21,15 +21,21 @@ jest.mock('next/image', () => ({
 }))
 
 describe('HomePage', () => {
-  it('renders the main heading', () => {
+  beforeEach(() => {
     render(<HomePage />)
+  })
+
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
+  it('renders the main heading', () => {
     expect(
       screen.getByRole('heading', { name: /Gerador de Cartão de Visita/i })
     ).toBeInTheDocument()
   })
 
   it('renders the introduction text', () => {
-    render(<HomePage />)
     expect(
       screen.getByText(
         /Crie grátis seu cartão de visita em passos rápidos! Você o insere no Instagram e demais canais digitais./i
@@ -38,7 +44,6 @@ describe('HomePage', () => {
   })
 
   it('includes the FormLead component', () => {
-    render(<HomePage />)
     expect(screen.getByTestId('form-lead')).toBeInTheDocument()
   })
 })
