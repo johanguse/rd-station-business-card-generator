@@ -15,7 +15,7 @@ export default function HomePage() {
             Instagram e demais canais digitais.
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-20">
           <Image
             priority
             src="/assets/images/board-painting.svg"
