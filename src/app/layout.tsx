@@ -9,12 +9,14 @@ import './globals.css'
 
 const nunito = Nunito_Sans({
   subsets: ['latin'],
+  weight: ['400', '500', '700'],
   variable: '--font-nunito',
   display: 'swap',
 })
 
 const darkerGrotesque = Darker_Grotesque({
   subsets: ['latin'],
+  weight: ['700', '800'],
   variable: '--font-darker-grotesque',
   display: 'swap',
 })
@@ -25,13 +27,6 @@ export const metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: [
-    'Next.js',
-    'React',
-    'Tailwind CSS',
-    'Server Components',
-    'Radix UI',
-  ],
   authors: [
     {
       name: siteConfig.author,
