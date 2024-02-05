@@ -15,7 +15,7 @@ export default function CardPage() {
   }
 
   return (
-    <main className="flex grow-0 items-center bg-gradient-main px-4 lg:grow lg:items-start">
+    <main className="flex grow items-start bg-gradient-main px-4 lg:items-center">
       <div className="container mx-auto space-y-20 py-12 md:py-20">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-20 lg:grid-cols-2">
           <Image
@@ -27,18 +27,22 @@ export default function CardPage() {
             className="mx-auto hidden w-[470px] md:ml-0 lg:block"
           />
           <div className="grid grid-rows-1 gap-4">
-            <Button variant={'link'} href="/" className="w-fit justify-start">
+            <Button
+              variant={'link'}
+              href="/"
+              className="w-fit justify-start text-sm text-white sm:text-lg"
+            >
               Gerar outro cartão
             </Button>
             <div className="rounded-3xl bg-white px-0 py-8 shadow-md md:px-6">
-              <div className="flex flex-row px-2 md:px-8">
+              <div className="flex flex-row px-2 xs:px-6 md:px-8">
                 <div className="self-center">
                   <Icons.rdIcon className="w-16" />
                 </div>
-                <div className="mx-2 flex w-1 bg-primary-superLight md:mx-4">
+                <div className="mx-4 flex w-1 bg-primary-superLight md:mx-6">
                   &nbsp;
                 </div>
-                <div className="grid grid-rows-1 gap-6 py-4 pl-2 text-xl-sm">
+                <div className="grid grid-rows-1 gap-6 py-4 pl-2 text-sm text-black sm:text-xl-sm">
                   <p>{formData.name}</p>
                   <p>{formData.phone}</p>
                   <p>{formData.email}</p>

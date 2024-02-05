@@ -51,7 +51,7 @@ export default function InputField({
       </label>
       {inputField}
       {errorMessage && (
-        <span className="text-base-xs text-rose-300" role="alert">
+        <span className="text-xs text-rose-300" role="alert">
           {errorMessage}
         </span>
       )}

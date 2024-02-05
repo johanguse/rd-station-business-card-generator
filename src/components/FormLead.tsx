@@ -88,7 +88,7 @@ export default function FormLead() {
             placeholder="nome@email.com"
           />
         </div>
-        <div className="col-span-2 my-3 text-base-xs text-white">
+        <div className="col-span-2 my-3 text-xs text-white">
           <ul className="mb-4 list-disc px-5">
             <li>
               Ao preencher o formulário, concordo * em receber comunicações de

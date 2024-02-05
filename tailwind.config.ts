@@ -28,7 +28,7 @@ const config: Config = {
           medium: '#97A1AC',
           text: '#636E7C',
         },
-        dark: '#212429',
+        black: '#212429',
         grayLight: {
           DEFAULT: '#FFFFFF',
           medium: '#E1E4E8',
@@ -36,8 +36,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['Nunito Sans', 'sans-serif'],
-        'darker-grotesque': ['Darker Grotesque', 'sans-serif'],
+        sans: ['var(--font-nunito-sans)'],
+        'darker-grotesque': ['var(--font-darker-grotesque)'],
       },
       fontSize: {
         '5xl': ['56px', { lineHeight: '100%' }],
@@ -51,10 +51,10 @@ const config: Config = {
         'xl-sm': ['20px', { lineHeight: '140%' }],
         'xl-sm-mobile': ['16px', { lineHeight: '140%' }],
         'subtitle-xs': ['14px', { lineHeight: '120%' }],
-        'base-lg': ['20px', { lineHeight: '150%' }],
-        'base-md': ['16px', { lineHeight: '150%' }],
-        'base-sm': ['14px', { lineHeight: '150%' }],
-        'base-xs': ['12px', { lineHeight: '150%' }],
+        lg: ['20px', { lineHeight: '150%' }],
+        md: ['16px', { lineHeight: '150%' }],
+        sm: ['14px', { lineHeight: '150%' }],
+        xs: ['12px', { lineHeight: '150%' }],
       },
       fontWeight: {
         black: '800',

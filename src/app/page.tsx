@@ -7,10 +7,10 @@ export default function HomePage() {
     <main className="flex grow items-center bg-gradient-main px-4">
       <div className="container mx-auto space-y-10 py-20">
         <div className="text-white">
-          <h1 className="mb-6 text-center text-4xl font-black">
+          <h1 className="mb-6 text-center text-2xl font-black sm:text-4xl">
             Gerador de Cartão de Visita
           </h1>
-          <p className="mx-auto w-full text-balance text-center text-xl-sm md:max-w-xl md:text-wrap">
+          <p className="mx-auto w-full text-balance text-center text-xl-sm-mobile sm:text-xl-sm md:max-w-xl md:text-wrap">
             Crie grátis seu cartão de visita em passos rápidos! Você o insere no
             Instagram e demais canais digitais.
           </p>

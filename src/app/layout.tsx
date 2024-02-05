@@ -9,14 +9,12 @@ import './globals.css'
 
 const nunito = Nunito_Sans({
   subsets: ['latin'],
-  weight: ['400', '700'],
   variable: '--font-nunito',
   display: 'swap',
 })
 
 const darkerGrotesque = Darker_Grotesque({
   subsets: ['latin'],
-  weight: ['700', '900'],
   variable: '--font-darker-grotesque',
   display: 'swap',
 })
@@ -70,7 +68,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
       <body
         className={`flex min-h-screen flex-col ${nunito.variable} ${darkerGrotesque.variable}`}
       >
