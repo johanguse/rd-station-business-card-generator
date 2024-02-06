@@ -1,12 +1,6 @@
 const formDataMock = {
   name: 'John Doe',
-  phone: '47911245449',
-  email: 'john@example.com',
-}
-
-const formDataMockWMask = {
-  name: 'John Doe',
-  phone: '(47) 91124-5449',
+  phone: '(47) 99877-4449',
   email: 'john@example.com',
 }
 
@@ -16,4 +10,4 @@ const formDataMockEmpty = {
   email: '',
 }
 
-export { formDataMock, formDataMockEmpty, formDataMockWMask }
+export { formDataMock, formDataMockEmpty }

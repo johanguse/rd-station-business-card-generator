@@ -46,7 +46,7 @@ describe('FormLeadSchema', () => {
   it('should require a valid email', () => {
     const result = FormLeadSchema.safeParse({
       name: 'John Doe',
-      phone: '1234567890',
+      phone: '(47) 99877-4449',
       email: 'not-an-email',
     })
 
