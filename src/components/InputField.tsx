@@ -14,6 +14,18 @@ type InputFieldProps = React.InputHTMLAttributes<HTMLInputElement> & {
   register: UseFormRegister<CreateFormLeadData>
 }
 
+function beforeMaskedStateChange({ nextState }: any) {
+  let { value } = nextState
+
+  return {
+    ...nextState,
+    value: value
+      .replace(/\D/g, '')
+      .replace(/^(\d{2})\B/, '($1) ')
+      .replace(/(\d{1})?(\d{4})(\d{4})/, '$1$2-$3'),
+  }
+}
+
 export default function InputField({
   label,
   name,
@@ -34,6 +46,7 @@ export default function InputField({
       className={`${inputClass} ${errorClass}`}
       {...InputFieldProps}
       maskPlaceholder={null}
+      beforeMaskedStateChange={beforeMaskedStateChange}
     />
   ) : (
     <input
