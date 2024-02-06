@@ -1,4 +1,4 @@
-import { formDataMockWMask } from '@/__mocks__/form-data'
+import { formDataMock } from '@/__mocks__/form-data'
 import { expect, test } from '@playwright/test'
 
 test.describe('Navigation and Form Interaction', () => {
@@ -52,7 +52,7 @@ test.describe('Navigation and Form Interaction', () => {
   test('form submission and verification', async ({ page }) => {
     await page.goto('/')
 
-    for (const [key, value] of Object.entries(formDataMockWMask)) {
+    for (const [key, value] of Object.entries(formDataMock)) {
       await page.fill(`input[name="${key}"]`, value)
     }
 
@@ -71,13 +71,13 @@ test.describe('Navigation and Form Interaction', () => {
       '/'
     )
 
-    await expect(page.getByText(formDataMockWMask.name)).toBeVisible()
-    await expect(page.getByText(formDataMockWMask.email)).toBeVisible()
-    await expect(page.getByText(formDataMockWMask.phone)).toBeVisible()
+    await expect(page.getByText(formDataMock.name)).toBeVisible()
+    await expect(page.getByText(formDataMock.email)).toBeVisible()
+    await expect(page.getByText(formDataMock.phone)).toBeVisible()
 
-    await expect(page.getByText(formDataMockWMask.name)).toHaveCount(1)
-    await expect(page.getByText(formDataMockWMask.email)).toHaveCount(1)
-    await expect(page.getByText(formDataMockWMask.phone)).toHaveCount(1)
+    await expect(page.getByText(formDataMock.name)).toHaveCount(1)
+    await expect(page.getByText(formDataMock.email)).toHaveCount(1)
+    await expect(page.getByText(formDataMock.phone)).toHaveCount(1)
 
     await expect(page.locator('#test-rd-link')).toBeVisible()
     await expect(page.locator('#test-rd-link')).toHaveCount(1)
