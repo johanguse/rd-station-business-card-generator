@@ -1,3 +1,4 @@
+import { Metadata, Viewport } from 'next'
 import { Darker_Grotesque, Nunito_Sans } from 'next/font/google'
 
 import { siteConfig } from '@/config/site'
@@ -21,7 +22,11 @@ const darkerGrotesque = Darker_Grotesque({
   display: 'swap',
 })
 
-export const metadata = {
+export const viewport: Viewport = {
+  themeColor: '#ffffff',
+}
+
+export const metadata: Metadata = {
   title: {
     default: `${siteConfig.name} | ${siteConfig.description}`,
     template: `%s | ${siteConfig.name}`,
