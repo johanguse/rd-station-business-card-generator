@@ -1,16 +1,20 @@
 'use client'
 
 import Image from 'next/image'
-import { redirect } from 'next/navigation'
+import { redirect, useSearchParams } from 'next/navigation'
 
-import { useFormLeadStore } from '@/store/form-lead'
-
+import BusinessCard from '@/components/BusinessCard'
 import { Button } from '@/components/Button'
 import { Icons } from '@/components/Icons'
 
 export default function CardPage() {
-  const formData = useFormLeadStore((state) => state.formData)
-  if (!formData) {
+  const params = useSearchParams()
+
+  const name = params.get('name')
+  const phone = params.get('phone')
+  const email = params.get('email')
+
+  if (!name || !phone || !email) {
     redirect('/')
   }
 
@@ -34,21 +38,11 @@ export default function CardPage() {
             >
               Gerar outro cartão
             </Button>
-            <div className="rounded-3xl bg-white px-0 py-8 shadow-md md:px-6">
-              <div className="flex flex-row px-2 xs:px-6 md:px-8">
-                <div className="self-center">
-                  <Icons.rdIcon className="w-16" />
-                </div>
-                <div className="mx-4 flex w-1 bg-primary-superLight md:mx-6">
-                  &nbsp;
-                </div>
-                <div className="grid grid-rows-1 gap-6 py-4 pl-2 text-sm text-black sm:text-xl-sm">
-                  <p>{formData.name}</p>
-                  <p>{formData.phone}</p>
-                  <p>{formData.email}</p>
-                </div>
-              </div>
-            </div>
+            <BusinessCard
+              name={name || undefined || ''}
+              phone={phone || undefined || ''}
+              email={email || undefined || ''}
+            />
             <Button id="download-card-button" variant={'secondary'} disabled>
               Baixar cartão
             </Button>
