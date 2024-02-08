@@ -1,20 +1,12 @@
 'use client'
 
 import Image from 'next/image'
-import { redirect } from 'next/navigation'
-
-import { useFormLeadStore } from '@/store/form-lead'
 
 import BusinessCard from '@/components/BusinessCard'
 import { Button } from '@/components/Button'
 import { Icons } from '@/components/Icons'
 
 export default function CardPage() {
-  const formData = useFormLeadStore((state) => state.formData)
-  if (!formData) {
-    redirect('/')
-  }
-
   return (
     <main className="flex grow items-start bg-gradient-main px-4 lg:items-center">
       <div className="container mx-auto space-y-20 py-12 md:py-20">
