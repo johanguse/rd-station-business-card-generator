@@ -4,17 +4,22 @@ import mockRouter from 'next-router-mock'
 
 jest.mock('next/router', () => require('next-router-mock'))
 
-jest.mock('next/navigation', () => ({
-  useRouter: () => ({
-    push: jest.fn(),
-    prefetch: jest.fn(),
-    route: '/',
-    pathname: '',
-    query: '',
-    asPath: '',
-  }),
-  redirect: jest.fn(),
-}))
+jest.mock('next/navigation', () => {
+  return {
+    __esModule: true,
+    usePathname: () => ({
+      pathname: '',
+    }),
+    useRouter: () => ({
+      push: jest.fn(),
+      replace: jest.fn(),
+      prefetch: jest.fn(),
+    }),
+    useSearchParams: () => ({
+      get: () => {},
+    }),
+  }
+})
 
 jest.mock('next/image', () => ({
   __esModule: true,
