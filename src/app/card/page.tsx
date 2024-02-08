@@ -1,8 +1,11 @@
 'use client'
 
+import { Suspense } from 'react'
+
 import Image from 'next/image'
 
 import BusinessCard from '@/components/BusinessCard'
+import BusinessCardSkeleton from '@/components/BusinessCardSkeleton'
 import { Button } from '@/components/Button'
 import { Icons } from '@/components/Icons'
 
@@ -27,7 +30,9 @@ export default function CardPage() {
             >
               Gerar outro cartão
             </Button>
-            <BusinessCard />
+            <Suspense fallback={<BusinessCardSkeleton />}>
+              <BusinessCard />
+            </Suspense>
             <Button id="download-card-button" variant={'secondary'} disabled>
               Baixar cartão
             </Button>

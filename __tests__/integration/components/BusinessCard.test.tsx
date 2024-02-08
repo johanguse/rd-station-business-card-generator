@@ -3,6 +3,8 @@ import { render, screen } from '@testing-library/react'
 
 import BusinessCard from '@/components/BusinessCard'
 
+jest.mock('next/router', () => require('next-router-mock'))
+
 jest.mock('next/navigation', () => {
   return {
     __esModule: true,
@@ -40,6 +42,8 @@ describe.skip('BusinessCard', () => {
   })
 
   it('renders message and link when there is no URL data', () => {
+    jest.mock('next/router', () => require('next-router-mock'))
+
     expect(
       screen.getByText('Preencha seus dados na primeira pagina')
     ).toBeInTheDocument()
