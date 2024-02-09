@@ -4,8 +4,8 @@ import { useSearchParams } from 'next/navigation'
 
 import { useFormLeadStore } from '@/store/form-lead'
 
-import { Button } from './Button'
-import { Icons } from './Icons'
+import { Button } from '@/components/Button'
+import { Icons } from '@/components/Icons'
 
 export default function BusinessCard() {
   const formData = useFormLeadStore((state) => state.formData)
