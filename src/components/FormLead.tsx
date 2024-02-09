@@ -36,7 +36,8 @@ export default function FormLead() {
       // Handle data submission here
       console.log('Form data submitted:', data)
       setFormData(data)
-      router.push('/card')
+      const dataURL = new URLSearchParams(data).toString()
+      router.push(`/card?${dataURL}`)
     } catch (error) {
       if (error instanceof Error) {
         setFormError({ message: error.message })

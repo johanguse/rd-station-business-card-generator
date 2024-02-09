@@ -87,11 +87,11 @@ After successfully installing the dependencies, you're ready to launch the devel
 bun run dev  # You can also use npm, yarn or pnpm if you prefer
 ```
 
-   This command fires up the Next.js development server.
+This command fires up the Next.js development server.
 
 **Accessing the Server**: By default, the server will be accessible at [http://localhost:3000](http://localhost:3000). You can use this URL to view your application in a web browser.
 
-   Note: The default port (3000) can be modified in the project settings if necessary.
+Note: The default port (3000) can be modified in the project settings if necessary.
 
 ## 🧪 Test
 
