@@ -12,7 +12,7 @@ import { Icons } from '@/components/Icons'
 export type ButtonVariant = 'default' | 'primary' | 'secondary' | 'link'
 
 const buttonClass =
-  ' font-Nunito_Sans px-2 py-4 inline-flex items-center w-full justify-center border-2 border-black disabled:border-gray-medium text-center text-xl font-semibold uppercase transition-colors duration-200 ease-in-out'
+  ' font-Nunito_Sans p-4 inline-flex items-center w-full justify-center border-2 border-black disabled:border-gray-medium text-center text-xl font-semibold uppercase transition-colors duration-200 ease-in-out'
 
 const disabledButton =
   'cursor-not-allowed bg-grayLight-medium hover:bg-grayLight-medium text-gray-medium'
@@ -41,7 +41,6 @@ const buttonVariants = cva('relative ', {
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  asChild?: boolean
   href?: string
   target?: React.HTMLAttributeAnchorTarget
   iconPosition?: 'left' | 'right'
@@ -76,7 +75,6 @@ const Button = React.forwardRef<
     {
       className,
       variant,
-      asChild = false,
       children,
       href,
       target,
