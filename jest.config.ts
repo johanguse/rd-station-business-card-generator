@@ -24,11 +24,13 @@ const customJestConfig: Config.InitialOptions = {
   testPathIgnorePatterns: [
     '<rootDir>/(node_modules|dist|coverage|build)/',
     '<rootDir>/src/app/layout.tsx',
+    '<rootDir>/src/components/stories/',
   ],
 
   coveragePathIgnorePatterns: [
     '<rootDir>/(node_modules|dist|coverage|build)/',
     '<rootDir>/src/app/layout.tsx',
+    '<rootDir>/src/components/stories/',
   ],
 
   collectCoverage: true,
