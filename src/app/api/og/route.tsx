@@ -6,7 +6,10 @@ export const runtime = 'edge'
 
 const getnNunitoRegular = async () => {
   const response = await fetch(
-    new URL('./NunitoSans_7pt-Regular.ttf', import.meta.url)
+    new URL(
+      '../../../../public/assets/fonts/NunitoSans_7pt-Regular.ttf',
+      import.meta.url
+    )
   )
   const nunitoRegular = await response.arrayBuffer()
 
