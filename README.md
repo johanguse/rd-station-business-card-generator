@@ -24,6 +24,7 @@ The RD Station Front-end Marketing challenge leverages a robust and modern tech 
 - **[Zustand](https://github.com/pmndrs/zustand)**: A minimal, yet powerful state management solution for React applications.
 - **[Testing Library](https://testing-library.com/)**: A set of utilities that allow you to test UI components in a user-centric way.
 - **[Playwright](https://playwright.dev/)**: Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API.
+- **[Storybook](https://storybook.js.org/)**: Storybook is a frontend workshop for building UI components and pages in isolation.
 
 To maintain high code quality and ensure that all tests pass, we use GitHub Actions for automated testing. This integration streamlines our development process, allowing for more efficient and effective testing workflows.
 
@@ -112,14 +113,24 @@ Or you can run individual tests:
 Run Unit Tests:
 
 ```bash
-npm run test:unit
+bun run test:unit # You can also use npm, yarn or pnpm if you prefer
 ```
 
 Run End-to-End Tests:
 
 ```bash
-npm run test:e2e
+bun run test:e2e # You can also use npm, yarn or pnpm if you prefer
 ```
+
+## 🧩 Storybook
+
+Storybook provides a frontend workshop environment for building UI components and pages in isolation. To run Storybook, use the following commands:
+
+```bash
+bun run storybook # You can also use npm, yarn or pnpm if you prefer
+```
+
+This command launches Storybook on <http://localhost:6006>, where you can view and interact with your components in isolation.
 
 ## 🏵️ Extra
 
