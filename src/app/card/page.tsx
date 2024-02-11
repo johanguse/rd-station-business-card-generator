@@ -1,13 +1,22 @@
 'use client'
 
+import { Suspense } from 'react'
+
 import Image from 'next/image'
+<<<<<<< HEAD
 import { redirect, useSearchParams } from 'next/navigation'
 
 import BusinessCard from '@/components/BusinessCard'
+=======
+
+import BusinessCard from '@/components/BusinessCard'
+import BusinessCardSkeleton from '@/components/BusinessCardSkeleton'
+>>>>>>> main
 import { Button } from '@/components/Button'
 import { Icons } from '@/components/Icons'
 
 export default function CardPage() {
+<<<<<<< HEAD
   const params = useSearchParams()
 
   const name = params.get('name')
@@ -18,6 +27,8 @@ export default function CardPage() {
     redirect('/')
   }
 
+=======
+>>>>>>> main
   return (
     <main className="flex grow items-start bg-gradient-main px-4 lg:items-center">
       <div className="container mx-auto space-y-20 py-12 md:py-20">
@@ -38,11 +49,17 @@ export default function CardPage() {
             >
               Gerar outro cartão
             </Button>
+<<<<<<< HEAD
             <BusinessCard
               name={name || undefined || ''}
               phone={phone || undefined || ''}
               email={email || undefined || ''}
             />
+=======
+            <Suspense fallback={<BusinessCardSkeleton />}>
+              <BusinessCard />
+            </Suspense>
+>>>>>>> main
             <Button id="download-card-button" variant={'secondary'} disabled>
               Baixar cartão
             </Button>
