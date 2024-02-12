@@ -1,23 +1,20 @@
-'use client'
-
 import Image from 'next/image'
-import { redirect, useSearchParams } from 'next/navigation'
+
+import { z } from 'zod'
+
+import { FormLeadSchema } from '@/lib/form-lead-validation'
 
 import BusinessCard from '@/components/BusinessCard'
 import { Button } from '@/components/Button'
 import { Icons } from '@/components/Icons'
 
-export default function CardPage() {
-  const params = useSearchParams()
+type CreateFormLeadData = z.infer<typeof FormLeadSchema>
 
-  const name = params.get('name')
-  const phone = params.get('phone')
-  const email = params.get('email')
+type CardPageProps = {
+  searchParams: CreateFormLeadData
+}
 
-  if (!name || !phone || !email) {
-    redirect('/')
-  }
-
+export default function CardPage(props: CardPageProps) {
   return (
     <main className="flex grow items-start bg-gradient-main px-4 lg:items-center">
       <div className="container mx-auto space-y-20 py-12 md:py-20">
@@ -38,11 +35,7 @@ export default function CardPage() {
             >
               Gerar outro cartão
             </Button>
-            <BusinessCard
-              name={name || undefined || ''}
-              phone={phone || undefined || ''}
-              email={email || undefined || ''}
-            />
+            <BusinessCard searchParams={props.searchParams} />
             <Button id="download-card-button" variant={'secondary'} disabled>
               Baixar cartão
             </Button>

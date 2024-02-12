@@ -1,22 +1,18 @@
-'use client'
-
-import { z } from 'zod'
-
-import { FormLeadSchema } from '@/lib/form-lead-validation'
-
 import { Button } from '@/components/Button'
 import { Icons } from '@/components/Icons'
 
-type CreateFormLeadData = z.infer<typeof FormLeadSchema>
-
 export default function BusinessCard({
-  name,
-  phone,
-  email,
-}: CreateFormLeadData) {
-  if (!name || !phone || !email) {
+  searchParams,
+}: {
+  searchParams: {
+    name: string
+    phone: string
+    email: string
+  }
+}) {
+  if (!searchParams.name || !searchParams.phone || !searchParams.email) {
     return (
-      <div className="mb-6 rounded-3xl bg-white px-0 py-20 shadow-md">
+      <div className="mb-0 rounded-3xl bg-white px-0 py-20 shadow-md">
         <p className="mb-6 text-center">
           Preencha seus dados na primeira pagina
         </p>
@@ -37,9 +33,9 @@ export default function BusinessCard({
           &nbsp;
         </div>
         <div className="grid grid-rows-1 gap-6 py-4 pl-2 text-sm text-black sm:text-xl-sm">
-          <p>{name}</p>
-          <p>{phone}</p>
-          <p>{email}</p>
+          <p>{searchParams.name}</p>
+          <p>{searchParams.phone}</p>
+          <p>{searchParams.email}</p>
         </div>
       </div>
     </div>

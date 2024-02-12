@@ -21,7 +21,6 @@ The RD Station Front-end Marketing challenge leverages a robust and modern tech 
 - **[ESLint](https://eslint.org/)**: A powerful tool for identifying and fixing problems in JavaScript code, ensuring code quality and consistency.
 - **[React Hook Form](https://react-hook-form.com/)**: A library for building forms in React, providing easy data handling and validation.
 - **[Zod](https://github.com/colinhacks/zod)**: A TypeScript-first schema declaration and validation library, ensuring data integrity.
-- **[Zustand](https://github.com/pmndrs/zustand)**: A minimal, yet powerful state management solution for React applications.
 - **[Testing Library](https://testing-library.com/)**: A set of utilities that allow you to test UI components in a user-centric way.
 - **[Playwright](https://playwright.dev/)**: Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API.
 - **[Storybook](https://storybook.js.org/)**: Storybook is a frontend workshop for building UI components and pages in isolation.

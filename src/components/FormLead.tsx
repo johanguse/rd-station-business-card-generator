@@ -1,8 +1,9 @@
 'use client'
 
+import { useState } from 'react'
+
 import { useRouter } from 'next/navigation'
 
-import { useFormLeadStore } from '@/store/form-lead'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -16,6 +17,8 @@ type CreateFormLeadData = z.infer<typeof FormLeadSchema>
 
 export default function FormLead() {
   const router = useRouter()
+  const [formError, setFormError] = useState<FormError | null>(null)
+
   const {
     register,
     handleSubmit,
@@ -23,8 +26,6 @@ export default function FormLead() {
   } = useForm<CreateFormLeadData>({
     resolver: zodResolver(FormLeadSchema),
   })
-
-  const { setFormData, formError, setFormError } = useFormLeadStore()
 
   const onSubmit = async (data: CreateFormLeadData) => {
     try {

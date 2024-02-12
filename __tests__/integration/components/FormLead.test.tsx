@@ -18,18 +18,6 @@ jest.mock('next/navigation', () => ({
 const mockSetFormData = jest.fn()
 const mockSetFormError = jest.fn()
 
-jest.mock('@/store/form-lead', () => ({
-  useFormLeadStore: jest.fn().mockImplementation(() => ({
-    formData: {
-      name: 'Test Name',
-      email: 'test@example.com',
-      phone: '1234567890',
-    },
-    setFormData: mockSetFormData,
-    setFormError: mockSetFormError,
-  })),
-}))
-
 describe('<FormLead />', () => {
   const FormLeadHandler = jest.fn()
 
