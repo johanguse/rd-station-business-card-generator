@@ -1,19 +1,21 @@
-'use client'
-
-import { useSearchParams } from 'next/navigation'
-
-import { useFormLeadStore } from '@/store/form-lead'
-
 import { Button } from '@/components/Button'
 import { Icons } from '@/components/Icons'
 
-export default function BusinessCard() {
-  const formData = useFormLeadStore((state) => state.formData)
-  const urlData = useSearchParams()
-  if (!urlData) {
+export default function BusinessCard({
+  searchParams,
+}: {
+  searchParams: {
+    name: string
+    phone: string
+    email: string
+  }
+}) {
+  if (!searchParams.name || !searchParams.phone || !searchParams.email) {
     return (
-      <div className="mb-6 rounded-3xl bg-white px-0 py-8 shadow-md md:px-6">
-        <p>Preencha seus dados na primeira pagina</p>
+      <div className="mb-0 rounded-3xl bg-white px-0 py-20 shadow-md">
+        <p className="mb-6 text-center">
+          Preencha seus dados na primeira pagina
+        </p>
         <Button variant="link" href="/">
           Ir para primeira pagina
         </Button>
@@ -31,9 +33,9 @@ export default function BusinessCard() {
           &nbsp;
         </div>
         <div className="grid grid-rows-1 gap-6 py-4 pl-2 text-sm text-black sm:text-xl-sm">
-          <p>{formData?.name || urlData.get('name')}</p>
-          <p>{formData?.phone || urlData.get('phone')}</p>
-          <p>{formData?.email || urlData.get('email')}</p>
+          <p>{searchParams.name}</p>
+          <p>{searchParams.phone}</p>
+          <p>{searchParams.email}</p>
         </div>
       </div>
     </div>

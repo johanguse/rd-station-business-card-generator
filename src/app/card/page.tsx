@@ -1,15 +1,20 @@
-'use client'
-
-import { Suspense } from 'react'
-
 import Image from 'next/image'
 
+import { z } from 'zod'
+
+import { FormLeadSchema } from '@/lib/form-lead-validation'
+
 import BusinessCard from '@/components/BusinessCard'
-import BusinessCardSkeleton from '@/components/BusinessCardSkeleton'
 import { Button } from '@/components/Button'
 import { Icons } from '@/components/Icons'
 
-export default function CardPage() {
+type CreateFormLeadData = z.infer<typeof FormLeadSchema>
+
+type CardPageProps = {
+  searchParams: CreateFormLeadData
+}
+
+export default function CardPage(props: CardPageProps) {
   return (
     <main className="flex grow items-start bg-gradient-main px-4 lg:items-center">
       <div className="container mx-auto space-y-20 py-12 md:py-20">
@@ -30,9 +35,7 @@ export default function CardPage() {
             >
               Gerar outro cartão
             </Button>
-            <Suspense fallback={<BusinessCardSkeleton />}>
-              <BusinessCard />
-            </Suspense>
+            <BusinessCard searchParams={props.searchParams} />
             <Button id="download-card-button" variant={'secondary'} disabled>
               Baixar cartão
             </Button>

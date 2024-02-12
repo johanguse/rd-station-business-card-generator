@@ -1,5 +1,3 @@
-'use client'
-
 import { LucideIcon, LucideProps } from 'lucide-react'
 
 export type Icon = LucideIcon
