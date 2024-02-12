@@ -1,8 +1,9 @@
 'use client'
 
+import { useState } from 'react'
+
 import { useRouter } from 'next/navigation'
 
-import { useFormLeadStore } from '@/store/form-lead'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -16,6 +17,8 @@ type CreateFormLeadData = z.infer<typeof FormLeadSchema>
 
 export default function FormLead() {
   const router = useRouter()
+  const [formError, setFormError] = useState<FormError | null>(null)
+
   const {
     register,
     handleSubmit,
@@ -24,18 +27,9 @@ export default function FormLead() {
     resolver: zodResolver(FormLeadSchema),
   })
 
-  const setFormData = useFormLeadStore((state) => state.setFormData)
-  const formError = useFormLeadStore((state) => state.formError)
-
-  const { setFormError } = useFormLeadStore((state) => ({
-    setFormError: state.setFormError,
-  }))
-
-  const handleSubmitWithValidation = async (data: CreateFormLeadData) => {
+  const onSubmit = async (data: CreateFormLeadData) => {
     try {
-      // Handle data submission here
       console.log('Form data submitted:', data)
-      setFormData(data)
       const dataURL = new URLSearchParams(data).toString()
       router.push(`/card?${dataURL}`)
     } catch (error) {
@@ -48,7 +42,7 @@ export default function FormLead() {
   return (
     <form
       className="w-full"
-      onSubmit={handleSubmit(handleSubmitWithValidation)}
+      onSubmit={handleSubmit(onSubmit)}
       data-testid="form-lead"
     >
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-x-8 md:gap-y-4">

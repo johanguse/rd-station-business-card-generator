@@ -1,25 +1,13 @@
 import CardPage from '@/app/card/page'
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import mockRouter from 'next-router-mock'
+import { z } from 'zod'
+
+import { FormLeadSchema } from '@/lib/form-lead-validation'
+
+type CreateFormLeadData = z.infer<typeof FormLeadSchema>
 
 jest.mock('next/router', () => require('next-router-mock'))
-
-jest.mock('next/navigation', () => {
-  return {
-    __esModule: true,
-    usePathname: () => ({
-      pathname: '',
-    }),
-    useRouter: () => ({
-      push: jest.fn(),
-      replace: jest.fn(),
-      prefetch: jest.fn(),
-    }),
-    useSearchParams: () => ({
-      get: () => {},
-    }),
-  }
-})
 
 jest.mock('next/image', () => ({
   __esModule: true,
@@ -28,23 +16,14 @@ jest.mock('next/image', () => ({
   },
 }))
 
-jest.mock('@/store/form-lead', () => {
-  return {
-    useFormLeadStore: jest.fn().mockReturnValue({
-      formData: {
-        name: 'Test Name',
-        email: 'test@example.com',
-        phone: '1234567890',
-      },
-      setFormData: jest.fn(),
-      setFormError: jest.fn(),
-    }),
-  }
-})
-
 describe('CardPage', () => {
   beforeEach(() => {
-    mockRouter.setCurrentUrl('/card')
+    mockRouter.query = {
+      name: 'mocked',
+      email: 'mocked',
+      phone: 'mocked',
+    }
+    mockRouter.push('/card?name=mocked&email=mocked&phone=mocked')
   })
 
   afterEach(() => {
@@ -52,7 +31,36 @@ describe('CardPage', () => {
   })
 
   it('renders the card page', () => {
-    render(<CardPage />)
-    expect(screen.getByAltText('mocked image')).toBeInTheDocument()
+    expect(mockRouter).toMatchObject({
+      pathname: '/card',
+      query: {
+        name: 'mocked',
+        email: 'mocked',
+        phone: 'mocked',
+      },
+    })
+
+    expect(mockRouter.asPath).toBe(
+      '/card?name=mocked&email=mocked&phone=mocked'
+    )
+
+    expect(mockRouter.query).toMatchObject({
+      name: 'mocked',
+      email: 'mocked',
+      phone: 'mocked',
+    })
+
+    const validSearchParams: CreateFormLeadData = {
+      name: Array.isArray(mockRouter.query.name)
+        ? mockRouter.query.name[0]
+        : mockRouter.query.name || '',
+      phone: Array.isArray(mockRouter.query.phone)
+        ? mockRouter.query.phone[0]
+        : mockRouter.query.phone || '',
+      email: Array.isArray(mockRouter.query.email)
+        ? mockRouter.query.email[0]
+        : mockRouter.query.email || '',
+    }
+    render(<CardPage searchParams={validSearchParams} />)
   })
 })
