@@ -78,7 +78,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body
-        className={`flex min-h-screen flex-col ${nunito.variable} ${darkerGrotesque.variable}`}
+        className={`flex flex-col ${nunito.variable} ${darkerGrotesque.variable}`}
       >
         <Header />
         {children}

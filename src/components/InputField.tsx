@@ -35,7 +35,7 @@ export default function InputField({
   ...InputFieldProps
 }: InputFieldProps) {
   const inputClass =
-    'w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-text'
+    'w-full appearance-none px-3 py-2 leading-tight text-gray-text'
   const errorClass = errors[name] ? 'border-rose-500' : ''
   const errorMessage = errors[name]?.message
 
