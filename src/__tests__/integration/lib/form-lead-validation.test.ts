@@ -1,6 +1,6 @@
-import { formDataMock } from '@/__mocks__/form-data'
-
 import { FormLeadSchema } from '@/lib/form-lead-validation'
+
+import { formDataMock } from '/src/__tests__/__mocks__/form-data'
 
 describe('FormLeadSchema', () => {
   it('should validate correct data', () => {
