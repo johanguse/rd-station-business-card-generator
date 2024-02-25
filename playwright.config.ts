@@ -6,7 +6,7 @@ import { absoluteUrl } from './lib/utils'
 const baseURL = absoluteUrl('').toString()
 
 export default defineConfig({
-  testDir: './__tests__/e2e',
+  testDir: './src/__tests__/e2e',
   timeout: 30 * 1000,
   fullyParallel: true,
   forbidOnly: !!process.env.CI,

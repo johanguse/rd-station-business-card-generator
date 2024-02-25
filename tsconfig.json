@@ -19,7 +19,7 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/__mocks__/*": ["./__mocks__/*"],
+      "@/__mocks__/*": ["src/__tests__/__mocks__/*"],
       "@/app/*": ["./src/app/*"],
       "@/components/*": ["./src/components/*"],
       "@/config/*": ["./config/*"],

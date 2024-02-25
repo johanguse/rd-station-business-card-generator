@@ -10,7 +10,7 @@ const customJestConfig: Config.InitialOptions = {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
 
-  testMatch: ['**/__tests__/integration/**/*.[jt]s?(x)'],
+  testMatch: ['**/*.test.{js,jsx,ts,tsx}'],
 
   extensionsToTreatAsEsm: ['.ts'],
 

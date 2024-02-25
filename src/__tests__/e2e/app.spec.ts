@@ -1,5 +1,6 @@
-import { formDataMock } from '@/__mocks__/form-data'
 import { expect, test } from '@playwright/test'
+
+import { formDataMock } from '/src/__tests__/__mocks__/form-data'
 
 test.describe('Navigation and Form Interaction', () => {
   test('is able to navigate to the home page and find correct elements', async ({

@@ -1,7 +1,8 @@
-import { formDataMock } from '@/__mocks__/form-data'
 import { render, screen } from '@testing-library/react'
 
 import BusinessCard from '@/components/BusinessCard'
+
+import { formDataMock } from '/src/__tests__/__mocks__/form-data'
 
 describe('BusinessCard', () => {
   beforeEach(() => {
