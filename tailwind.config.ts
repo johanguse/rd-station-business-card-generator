@@ -3,6 +3,15 @@ import type { Config } from 'tailwindcss'
 const config: Config = {
   content: ['./src/**/*.{jsx,tsx}'],
   theme: {
+    container: {
+      center: true,
+      screens: {
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1440px',
+      },
+    },
     extend: {
       backgroundImage: {
         'gradient-main':
